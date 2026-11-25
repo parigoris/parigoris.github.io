@@ -30,7 +30,7 @@ body {
 
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* Sidebar with the lesson list (docs-style). Desktop: fixed column on the left. Phone: a "Lessons" menu to tap open. */
+/* Sidebar with the chapter list (docs-style). Desktop: fixed column on the left. Phone: a "The journey" menu to tap open. */
 .with-sidebar { display: grid; grid-template-columns: 210px minmax(0, 720px); gap: 48px; padding-top: 32px; padding-bottom: 64px; }
 .content { min-width: 0; }
 .toc-desktop { position: sticky; top: 24px; align-self: start; padding-top: 14px; }
@@ -78,7 +78,7 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 .intro h1::after { content: ""; display: block; width: 56px; height: 3px; background: var(--accent); margin-top: 14px; }
 .lead { font-size: 1.15rem; color: var(--muted); max-width: 36em; }
 
-/* Lesson list */
+/* Chapter list */
 .cards { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; }
 .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-card); transition: border-color 0.15s, box-shadow 0.15s; }
 .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180, 83, 42, 0.08); }
@@ -87,35 +87,35 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 .card .date { font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
 
-/* Numbered lesson list */
-.lesson-list { list-style: none; padding: 0; margin: 20px 0 0; border-top: 1px solid var(--line); }
-.lesson-list li { border-bottom: 1px solid var(--line); }
-.lesson-list a { display: flex; gap: 16px; align-items: baseline; padding: 14px 4px; color: inherit; text-decoration: none; }
-.lesson-list a:hover .lesson-title { color: var(--accent); }
-.lesson-num { flex: none; width: 1.6em; font-weight: 700; color: var(--accent); }
-.lesson-text { display: flex; flex-direction: column; gap: 2px; }
-.lesson-title { font-size: 1.1rem; color: var(--text); }
-.lesson-date { font-size: 0.85rem; color: var(--muted); }
+/* Numbered chapter list */
+.chapter-list { list-style: none; padding: 0; margin: 20px 0 0; border-top: 1px solid var(--line); }
+.chapter-list li { border-bottom: 1px solid var(--line); }
+.chapter-list a { display: flex; gap: 16px; align-items: baseline; padding: 14px 4px; color: inherit; text-decoration: none; }
+.chapter-list a:hover .chapter-title { color: var(--accent); }
+.chapter-num { flex: none; width: 1.6em; font-weight: 700; color: var(--accent); }
+.chapter-text { display: flex; flex-direction: column; gap: 2px; }
+.chapter-title { font-size: 1.1rem; color: var(--text); }
+.chapter-date { font-size: 0.85rem; color: var(--muted); }
 
-/* Previous / next lesson */
-.lesson-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-.lesson-nav a { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--text); font-size: 0.95rem; }
-.lesson-nav a span { display: block; font-size: 0.8rem; color: var(--accent); margin-bottom: 4px; }
-.lesson-nav .next { grid-column: 2; text-align: right; }
-@media (max-width: 520px) { .lesson-nav { grid-template-columns: 1fr; } .lesson-nav .next { grid-column: 1; } }
+/* Previous / next chapter */
+.chapter-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+.chapter-nav a { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--text); font-size: 0.95rem; }
+.chapter-nav a span { display: block; font-size: 0.8rem; color: var(--accent); margin-bottom: 4px; }
+.chapter-nav .next { grid-column: 2; text-align: right; }
+@media (max-width: 520px) { .chapter-nav { grid-template-columns: 1fr; } .chapter-nav .next { grid-column: 1; } }
 
-/* Lesson page */
+/* Chapter page */
 .back { margin: 0 0 8px; font-size: 0.95rem; }
 .back a { text-decoration: none; }
 .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
 .summary { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
 .hero { margin: 0 0 24px; }
 .hero img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
-.lesson blockquote { margin: 16px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
-.lesson blockquote p { margin: 0; }
+.chapter blockquote { margin: 16px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+.chapter blockquote p { margin: 0; }
 /* List points: less space than between paragraphs, so a list reads as one group (GOV.UK spaced lists) */
-.lesson ul, .lesson ol { padding-left: 1.25em; }
-.lesson li + li { margin-top: 0.75em; }
+.chapter ul, .chapter ol { padding-left: 1.25em; }
+.chapter li + li { margin-top: 0.75em; }
 
 /* "In short" box: lets scanning readers get the point in 3 lines (standards.md, Writing for readers) */
 .in-short { margin: 0 0 28px; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); }
