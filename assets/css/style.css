@@ -1,0 +1,108 @@
+/* Warm editorial on white: serif headings, one terracotta accent, cream only in boxes.
+   Colour meanings are in standards.md ("Colour system").
+   System fonts only: fast, no outside requests. Contrast (WCAG AA needs 4.5:1):
+   accent on white 5.0:1, grey text on white 6.3:1, grey text in cream box 5.8:1. */
+:root {
+  --accent: #b4532a;
+  --accent-soft: #f8ece4;
+  --text: #2b2420;
+  --muted: #6b5e55;
+  --line: #ebe5dd;
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-soft: #faf6f0;
+  --radius: 4px;
+  --serif: ui-serif, "New York", Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+/* Keyboard focus: a clear 2px terracotta ring (WCAG 2.4.7 and 2.4.13; 5.0:1 on white) */
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+/* Tap targets at least 44px tall on phones (Apple HIG; WCAG 2.5.8 needs 24px) */
+.site-name, .site-nav a, .footer-links a, .more-link { display: inline-block; padding: 10px 0; }
+.footer-links a { padding: 11px 0; }
+
+h1, h2, h3 { line-height: 1.25; font-family: var(--serif); font-weight: 600; }
+h1 { font-size: 2rem; margin: 0.4em 0 0.2em; }
+h2 { font-size: 1.3rem; margin-top: 2em; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
+.site-name { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+.site-nav { display: flex; gap: 18px; }
+.site-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.site-nav a:hover, .site-nav a.active { color: var(--accent); }
+
+main.container { padding-top: 32px; padding-bottom: 64px; }
+
+/* Home */
+.intro h1 { font-size: 2.6rem; }
+.intro h1::after { content: ""; display: block; width: 56px; height: 3px; background: var(--accent); margin-top: 14px; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 36em; }
+
+/* Output cards */
+.cards { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-card); transition: border-color 0.15s, box-shadow 0.15s; }
+.card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180, 83, 42, 0.08); }
+.card a { display: block; padding: 18px 20px; color: inherit; text-decoration: none; }
+.card h3 { margin: 0 0 4px; color: var(--text); font-size: 1.2rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.card .date { font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+
+/* Output page */
+.back { margin: 0 0 8px; font-size: 0.95rem; }
+.back a { text-decoration: none; }
+.meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
+.summary { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
+.hero { margin: 0 0 24px; }
+.hero img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
+.output blockquote { margin: 16px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+.output blockquote p { margin: 0; }
+/* List points: less space than between paragraphs, so a list reads as one group (GOV.UK spaced lists) */
+.output ul, .output ol { padding-left: 1.25em; }
+.output li + li { margin-top: 0.75em; }
+
+/* "In short" box: lets scanning readers get the point in 3 lines (standards.md, Writing for readers) */
+.in-short { margin: 0 0 28px; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); }
+.in-short h2 { font-family: inherit; margin: 0 0 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.in-short ul { margin: 0; padding-left: 1.1em; }
+.in-short li + li { margin-top: 0.5em; }
+
+/* Code blocks wrap instead of scrolling sideways on a phone */
+pre { margin: 16px 0; padding: 14px 16px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); white-space: pre-wrap; overflow-wrap: anywhere; }
+pre code { background: none; border: 0; padding: 0; font-size: 0.9em; }
+
+.button { display: inline-block; padding: 10px 16px; background: var(--accent); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+.button:hover { opacity: 0.92; }
+
+code { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 5px; padding: 0.1em 0.35em; font-size: 0.9em; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; padding-bottom: 28px; }
+.footer-links { display: flex; gap: 16px; }
+.footer-inner { align-items: center; }
+
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  h1 { font-size: 1.7rem; }
+  .intro h1 { font-size: 2.3rem; }
+  .site-nav { gap: 14px; }
+}

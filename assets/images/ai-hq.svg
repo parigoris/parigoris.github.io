@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif">
+  <rect width="720" height="360" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b4532a"/>
+    </marker>
+  </defs>
+
+  <!-- Phone -->
+  <rect x="30" y="110" width="150" height="140" rx="14" fill="#ffffff" stroke="#e8ded3" stroke-width="2"/>
+  <text x="105" y="160" text-anchor="middle" font-size="30">📱</text>
+  <text x="105" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#2b2420">Me</text>
+  <text x="105" y="218" text-anchor="middle" font-size="13" fill="#6b5e55">ask · review · merge</text>
+
+  <!-- AI agent -->
+  <rect x="285" y="60" width="150" height="110" rx="14" fill="#ffffff" stroke="#e8ded3" stroke-width="2"/>
+  <text x="360" y="102" text-anchor="middle" font-size="16" font-weight="700" fill="#2b2420">AI assistant</text>
+  <text x="360" y="125" text-anchor="middle" font-size="13" fill="#6b5e55">plans, builds,</text>
+  <text x="360" y="143" text-anchor="middle" font-size="13" fill="#6b5e55">tests its own work</text>
+
+  <!-- Guard -->
+  <rect x="285" y="205" width="150" height="95" rx="14" fill="#f8ece4" stroke="#b4532a" stroke-width="2"/>
+  <text x="360" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#b4532a">🛡️ Guardrails</text>
+  <text x="360" y="263" text-anchor="middle" font-size="13" fill="#b4532a">written rules +</text>
+  <text x="360" y="281" text-anchor="middle" font-size="13" fill="#b4532a">a hook that blocks</text>
+
+  <!-- Repo -->
+  <rect x="540" y="110" width="150" height="140" rx="14" fill="#ffffff" stroke="#e8ded3" stroke-width="2"/>
+  <text x="615" y="160" text-anchor="middle" font-size="30">🗂️</text>
+  <text x="615" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="#2b2420">HQ repo</text>
+  <text x="615" y="218" text-anchor="middle" font-size="13" fill="#6b5e55">rules · notes · plans</text>
+
+  <!-- Arrows -->
+  <path d="M180 150 L280 118" stroke="#b4532a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="222" y="122" text-anchor="middle" font-size="12" fill="#6b5e55">a task</text>
+  <path d="M360 170 L360 200" stroke="#b4532a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M435 252 L535 200" stroke="#b4532a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="500" y="250" text-anchor="middle" font-size="12" fill="#6b5e55">pull request</text>
+  <path d="M540 230 C 420 340, 300 340, 180 235" stroke="#6b5e55" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arrow)"/>
+  <text x="360" y="345" text-anchor="middle" font-size="12" fill="#6b5e55">nothing lands until I merge it</text>
+
+  <text x="360" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#2b2420">My AI headquarters</text>
+</svg>

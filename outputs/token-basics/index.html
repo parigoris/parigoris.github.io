@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token basics: why long AI chats cost more, and 7 tricks to spend less · Leonidas Parigoris</title>
+  <meta name="description" content="I spent a whole day building this website in one long chat with an AI agent. It worked, but it got expensive. Here's what I learned about tokens, in plain words.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="/">Leonidas Parigoris</a>
+    <nav class="site-nav">
+      <a href="/outputs/" class="active">Outputs</a>
+      <a href="/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="container">
+    <article class="output">
+  <p class="back"><a href="/outputs/">← All outputs</a></p>
+  <h1>Token basics: why long AI chats cost more, and 7 tricks to spend less</h1>
+  <p class="meta">24 November 2026</p>
+  <p class="summary">I spent a whole day building this website in one long chat with an AI agent. It worked, but it got expensive. Here's what I learned about tokens, in plain words.</p>
+
+  
+  <aside class="in-short" aria-label="In short">
+    <h2>In short</h2>
+    <ul>
+      <li><strong>What:</strong> a beginner’s guide to tokens, the small pieces of text that AI tools count and charge for.</li>
+      <li><strong>Why it matters:</strong> every new message makes the AI re-read the whole chat, so long chats about many topics get pricey.</li>
+      <li><strong>Biggest win:</strong> one chat per task. Starting fresh is free, and the answers often get better.</li>
+      
+    </ul>
+  </aside>
+  
+
+  
+
+  
+
+  <h2 id="what-i-learned-the-hard-way">What I learned the hard way</h2>
+
+<p>I built most of this website in one very long session with Claude Code. We did the design, the colours, the research, a build log and a pile of new ideas, all in the same chat. Everything worked. But by the end, every small question I asked was slow and costly, even a one-line “looks good, thanks”.</p>
+
+<p>The reason turned out to be simple, and once I saw it, I changed how I work.</p>
+
+<h2 id="what-is-a-token">What is a token?</h2>
+
+<p>AI models don’t read words the way we do. They cut text into small chunks called <strong>tokens</strong>. A token is often a piece of a word, a few letters long. For Claude, Anthropic says a token is roughly 3.5 English characters on earlier models, and newer models cut the same text into a bit more tokens. Other languages and code can split differently.</p>
+
+<p>You pay for tokens (or use up your plan’s limit with them) in two directions: what the AI reads, and what it writes.</p>
+
+<h2 id="why-long-chats-cost-more">Why long chats cost more</h2>
+
+<p>Here’s the part that surprised me. The AI has no memory between messages. So each time you send one, the tool sends the <strong>whole conversation</strong> again: every earlier message, every file it read, every result it got back.</p>
+
+<p>That means:</p>
+
+<ul>
+  <li>A short question at the end of a long chat still pays for everything before it.</li>
+  <li>A chat that wandered across three unrelated topics re-reads all three on every turn.</li>
+  <li>Tools help a little: recently read text is cached and gets cheaper. But the cache expires after a while, and then the full history is processed again.</li>
+</ul>
+
+<p>So the cost of a message isn’t about how long <em>your</em> message is. It’s about how long the <em>whole chat</em> is.</p>
+
+<h2 id="7-tricks-to-spend-fewer-tokens">7 tricks to spend fewer tokens</h2>
+
+<ol>
+  <li>
+    <p><strong>One chat per task.</strong> When you switch to something unrelated, start fresh. In Claude Code, <code class="language-plaintext highlighter-rouge">/clear</code> does this, and the docs say it “costs nothing”. The new task stops paying for the old one, and the AI’s answers often get sharper too.</p>
+  </li>
+  <li>
+    <p><strong>Save what matters in files before you leave.</strong> Starting fresh only works if nothing important is lost. Ask the AI to write decisions, research and next steps into a file. The next chat reads that file, not the whole old conversation. I now keep a parked-ideas file and a standards file for exactly this.</p>
+  </li>
+  <li>
+    <p><strong>Keep your instruction file short.</strong> Claude Code reads a file called <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> at the start of every session, so every line in it is paid for every time. Anthropic recommends keeping it under 200 lines, because longer files use more space and Claude follows them less reliably. Mine is about 120 lines.</p>
+  </li>
+  <li>
+    <p><strong>Put the “never ever” rules in a hook, not in text.</strong> A written rule is a guideline, and the AI can decide it doesn’t apply. A <em>hook</em> is a small script that runs before every command and simply blocks it. I have one that stops the agent from pushing to my main branch or merging changes. It costs no tokens to remember, and it can’t be argued with.</p>
+  </li>
+  <li>
+    <p><strong>Send noisy work to a helper.</strong> Long test runs, big searches and log files fill up the chat fast. A <em>subagent</em> (a helper AI) can do that work in its own space and hand back a short summary. It still uses tokens, but your main chat stays small.</p>
+  </li>
+  <li>
+    <p><strong>Be specific, and plan first.</strong> “Improve my website” makes the AI look at everything. “Make the footer links bigger on phones” goes straight to the point. For bigger tasks, ask for a plan before any building starts (in Claude Code, Shift+Tab switches to plan mode). Fixing a plan is much cheaper than fixing finished work.</p>
+  </li>
+  <li>
+    <p><strong>Stop early when it goes the wrong way.</strong> Press Esc to stop the AI mid-action. <code class="language-plaintext highlighter-rouge">/rewind</code> (or Esc twice) takes you back to an earlier point. And if you’ve corrected it twice and it still isn’t right, start a fresh chat with a better prompt instead of a third correction.</p>
+  </li>
+</ol>
+
+<p>Bonus tip: <strong>ask your AI to warn you when a session gets long, then start a fresh one.</strong> I added this to my own rules after my long website day, and now my agent tells me when it’s time.</p>
+
+<h2 id="be-careful-with-compact">Be careful with “compact”</h2>
+
+<p>Claude Code also has <code class="language-plaintext highlighter-rouge">/compact</code>, which shrinks a long chat into a summary. It sounds like a free fix, but to write that summary the AI has to read the whole chat first. On a long session, that’s a big request in itself. Saving the important parts to a file and starting fresh is often the better choice.</p>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>Open Claude Code in any project and type:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/context
+</code></pre></div></div>
+
+<p>You’ll see what’s taking up space right now: your instruction files, tools, and the conversation itself. Then try <code class="language-plaintext highlighter-rouge">/usage</code> to see what your session has used so far. Run them again near the end of a long chat, and the difference tells the whole story.</p>
+
+<p>And if you only do one thing, paste this into your instructions file:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When this session gets long or mixes unrelated topics, warn me.
+Before I start a new session, save decisions and next steps to a file.
+</code></pre></div></div>
+
+<h2 id="go-deeper">Go deeper</h2>
+
+<p>These are the official Claude Code docs I used for this guide:</p>
+
+<ul>
+  <li><a href="https://code.claude.com/docs/en/costs">Manage costs effectively</a>: why usage climbs, <code class="language-plaintext highlighter-rouge">/usage</code>, <code class="language-plaintext highlighter-rouge">/clear</code>, <code class="language-plaintext highlighter-rouge">/compact</code> and subagents.</li>
+  <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>: how <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> loads, and the 200-line target.</li>
+  <li><a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>: one task per session, plan mode, hooks for rules that can’t bend.</li>
+  <li><a href="https://platform.claude.com/docs/en/about-claude/glossary">Glossary: tokens</a>: what a token is, and how token counts differ between models.</li>
+</ul>
+
+</article>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Leonidas Parigoris</span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197" rel="me">LinkedIn</a>
+      <a href="https://github.com/parigoris" rel="me">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
