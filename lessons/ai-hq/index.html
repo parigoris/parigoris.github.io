@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My AI headquarters: a safe home base for working with Claude · Leonidas Parigoris</title>
+  <meta name="description" content="Before building anything clever with AI, I built the place it works from: a private repo with clear rules, real guardrails and a phone-friendly workflow.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="/">Leonidas Parigoris</a>
+    <nav class="site-nav">
+      <a href="/lessons/" class="active">Lessons</a>
+      <a href="/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+  <div class="container with-sidebar">
+    
+
+<aside class="toc toc-desktop" aria-label="Lessons">
+  <p class="toc-heading"><a href="/lessons/">Lessons</a></p>
+  
+<ol class="toc-list">
+  
+  <li><a href="/lessons/ai-hq/" class="active" aria-current="page"><span class="toc-num">1</span>My AI headquarters</a></li>
+  
+  <li><a href="/lessons/token-basics/"><span class="toc-num">2</span>Token basics</a></li>
+  
+</ol>
+
+</aside>
+<details class="toc toc-mobile">
+  <summary>Lessons</summary>
+  
+<ol class="toc-list">
+  
+  <li><a href="/lessons/ai-hq/" class="active" aria-current="page"><span class="toc-num">1</span>My AI headquarters</a></li>
+  
+  <li><a href="/lessons/token-basics/"><span class="toc-num">2</span>Token basics</a></li>
+  
+</ol>
+
+</details>
+
+    <main class="content">
+      <article class="lesson">
+  <p class="back"><a href="/lessons/">← All lessons</a></p>
+  <h1>My AI headquarters: a safe home base for working with Claude</h1>
+  <p class="meta">18 November 2026</p>
+  <p class="summary">Before building anything clever with AI, I built the place it works from: a private repo with clear rules, real guardrails and a phone-friendly workflow.</p>
+
+  
+  <aside class="in-short" aria-label="In short">
+    <h2>In short</h2>
+    <ul>
+      <li><strong>What:</strong> a private home base where an AI agent works for me under clear rules.</li>
+      <li><strong>How:</strong> every change arrives as a pull request, and nothing goes live until I merge it.</li>
+      <li><strong>Surprise:</strong> my own tests all passed, but an independent AI reviewer still found nine gaps in my safety guard.</li>
+      
+    </ul>
+  </aside>
+  
+
+  
+  <figure class="hero">
+    <img src="/assets/images/ai-hq.svg" alt="Diagram: I send a task from my phone, the AI assistant builds it behind guardrails, and changes reach my repo only as pull requests that I merge.">
+  </figure>
+  
+
+  
+
+  <h2 id="what-i-asked-claude">What I asked Claude</h2>
+
+<p>I wanted to use AI every day, from my phone, without my laptop on. But before letting an AI agent loose on my files, I asked Claude to help me build a <strong>headquarters</strong> first. Roughly:</p>
+
+<blockquote>
+  <p>Set up a private repository that holds my rules, notes, plans and prompts. Never do anything I didn’t agree to. Warn me before you get any new access. Every change goes through a pull request that I approve, and you never publish anything without me.</p>
+</blockquote>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p>Think of it as an office with a rulebook and a locked door.</p>
+
+<ul>
+  <li><strong>The rulebook.</strong> Every session, the AI reads a file of rules first: plan before building, work in small steps, check your own work, explain things in plain words, and mark how confident you are. Because each session starts with a blank memory, everything important lives in files, not in chat.</li>
+  <li><strong>The workflow.</strong> I describe a task from my phone. The AI works on a separate branch and opens a pull request. I read a short summary, look at the changes, and tap merge if I’m happy. Nothing reaches the main version without me.</li>
+  <li><strong>The locked door.</strong> Written rules depend on the AI following them, so I added a <em>hook</em>: a small script that runs automatically before every command, a bit like a database trigger. It blocks the common ways an agent could push to the main branch, force push or merge. It’s a safety net, not a wall: a determined workaround could still get past it, which is why the main branch also gets GitHub’s own protection once the site is public.</li>
+  <li><strong>A second pair of eyes.</strong> For important work, a separate AI reviewer that didn’t build the thing checks it against my rules and tells me what’s risky or missing.</li>
+</ul>
+
+<h2 id="what-i-learned">What I learned</h2>
+
+<ul>
+  <li><strong>Rules are a sign on the door. Hooks are the lock.</strong> If something really matters, enforce it, don’t just write it down.</li>
+  <li><strong>My own tests weren’t enough.</strong> The guard passed every test I wrote, and then an independent reviewer found nine gaps in it, including one way around it that I’d never have thought of. Fixing them taught me more than building it did.</li>
+  <li><strong>Least access is a habit, not a setting.</strong> Each new permission now comes with a short warning: what it unlocks, what could go wrong, and how to undo it.</li>
+  <li><strong>Slow at the start makes everything after it faster.</strong> With the base in place, every new project starts from rules and guardrails I already trust.</li>
+</ul>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>Paste this at the start of your next chat with an AI agent:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Before you change anything, write a short plan and wait for my OK.
+Work in small steps, and check your own work after each one.
+Explain what you did in plain words, and tell me how confident you are.
+Never publish, delete or push anything without asking me first.
+</code></pre></div></div>
+
+<p>It takes ten seconds. The agent gets a little slower to act, and a lot easier to trust.</p>
+
+
+  
+  
+  
+  
+  <nav class="lesson-nav" aria-label="Lesson navigation">
+    
+    <a class="next" href="/lessons/token-basics/"><span>Lesson 2 →</span>Token basics: why long AI chats cost more, and 7 tricks to spend less</a>
+  </nav>
+</article>
+
+    </main>
+  </div>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Leonidas Parigoris</span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197" rel="me">LinkedIn</a>
+      <a href="https://github.com/parigoris" rel="me">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
