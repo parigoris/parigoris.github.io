@@ -28,7 +28,28 @@ body {
   line-height: 1.6;
 }
 
-.container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+/* Sidebar with the lesson list (docs-style). Desktop: fixed column on the left. Phone: a "Lessons" menu to tap open. */
+.with-sidebar { display: grid; grid-template-columns: 210px minmax(0, 720px); gap: 48px; padding-top: 32px; padding-bottom: 64px; }
+.content { min-width: 0; }
+.toc-desktop { position: sticky; top: 24px; align-self: start; padding-top: 14px; }
+.toc-heading { margin: 0 0 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc-heading a { color: var(--muted); text-decoration: none; }
+.toc-list { list-style: none; margin: 0; padding: 0; }
+.toc-list a { display: flex; gap: 10px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--text); text-decoration: none; font-size: 0.95rem; line-height: 1.35; }
+.toc-list a:hover { color: var(--accent); }
+.toc-list a.active { border-left-color: var(--accent); color: var(--accent); font-weight: 600; background: var(--bg-soft); }
+.toc-num { flex: none; min-width: 1.2em; color: var(--muted); }
+.toc-mobile { display: none; }
+@media (max-width: 860px) {
+  .with-sidebar { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 16px; }
+  .toc-desktop { display: none; }
+  .toc-mobile { display: block; margin-bottom: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
+  .toc-mobile summary { padding: 12px 14px; font-weight: 600; cursor: pointer; min-height: 44px; box-sizing: border-box; }
+  .toc-mobile .toc-list { padding: 0 8px 8px; }
+  .toc-mobile .toc-list a { padding: 11px 10px; }
+}
 
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
@@ -50,7 +71,7 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 .site-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
 .site-nav a:hover, .site-nav a.active { color: var(--accent); }
 
-main.container { padding-top: 32px; padding-bottom: 64px; }
+
 
 /* Home */
 .intro h1 { font-size: 2.6rem; }
