@@ -41,6 +41,8 @@ body {
 .toc-list a:hover { color: var(--accent); }
 .toc-list a.active { border-left-color: var(--accent); color: var(--accent); font-weight: 600; background: var(--bg-soft); }
 .toc-num { flex: none; min-width: 1.2em; color: var(--muted); }
+.toc-soon { display: flex; gap: 10px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--muted); font-size: 0.95rem; line-height: 1.35; }
+.toc-soon small { margin-left: auto; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .toc-mobile { display: none; }
 @media (max-width: 860px) {
   .with-sidebar { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 16px; }
@@ -95,12 +97,17 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 .chapter-num { flex: none; width: 1.6em; font-weight: 700; color: var(--accent); }
 .chapter-text { display: flex; flex-direction: column; gap: 2px; }
 .chapter-title { font-size: 1.1rem; color: var(--text); }
-.chapter-date { font-size: 0.85rem; color: var(--muted); }
+.chapter-sub { font-size: 0.9rem; color: var(--muted); }
+.chapter-row { display: flex; gap: 16px; align-items: baseline; padding: 14px 4px; }
+.chapter-list .soon .chapter-title, .chapter-list .soon .chapter-num { color: var(--muted); }
+.chapter-label { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
 
 /* Previous / next chapter */
 .chapter-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
 .chapter-nav a { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--text); font-size: 0.95rem; }
 .chapter-nav a span { display: block; font-size: 0.8rem; color: var(--accent); margin-bottom: 4px; }
+.chapter-nav .soon { display: block; padding: 12px 14px; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted); font-size: 0.95rem; }
+.chapter-nav .soon span { display: block; font-size: 0.8rem; margin-bottom: 4px; }
 .chapter-nav .next { grid-column: 2; text-align: right; }
 @media (max-width: 520px) { .chapter-nav { grid-template-columns: 1fr; } .chapter-nav .next { grid-column: 1; } }
 
