@@ -28,7 +28,7 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">1</span>The 5 words<small>soon</small></span></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
   
   
   
@@ -66,7 +66,7 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">1</span>The 5 words<small>soon</small></span></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
   
   
   
@@ -149,6 +149,12 @@
   <li><strong>The locked door.</strong> Written rules depend on the AI following them, so I added a <em>hook</em>: a small script that runs automatically before every command, a bit like a database trigger. It blocks the common ways an agent could push to the main branch, force push or merge. It’s a safety net, not a wall: a determined workaround could still get past it, which is why the main branch also gets GitHub’s own protection once the site is public.</li>
   <li><strong>A second pair of eyes.</strong> For important work, a separate AI reviewer that didn’t build the thing checks it against my rules and tells me what’s risky or missing.</li>
 </ul>
+
+<aside class="mistake" aria-label="My mistake">
+  <h2>My mistake</h2>
+  <p>A few days after I built the guard, I opened a session with two repositories in it. The guard quietly stopped loading, and nothing told me. I only found out because I tested it. Everything I thought was locked had been open the whole time.</p>
+  <p class="mistake-rule"><strong>The rule it gave me:</strong> every session starts with a test push to the main branch, and it must be blocked. If it isn’t, all other work stops until the guard is back.</p>
+</aside>
 
 <h2 id="what-i-learned">What I learned</h2>
 
