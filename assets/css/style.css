@@ -50,7 +50,7 @@ body {
   .toc-mobile { display: block; margin-bottom: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
   .toc-mobile summary { padding: 12px 14px; font-weight: 600; cursor: pointer; min-height: 44px; box-sizing: border-box; }
   .toc-mobile .toc-list { padding: 0 8px 8px; }
-  .toc-mobile .toc-list a { padding: 11px 10px; }
+  .toc-mobile .toc-list a { padding: 12px 10px; min-height: 44px; }
 }
 
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -59,7 +59,10 @@ a:hover { text-decoration-thickness: 2px; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 /* Tap targets at least 44px tall on phones (Apple HIG; WCAG 2.5.8 needs 24px) */
 .site-name, .site-nav a, .footer-links a, .more-link { display: inline-block; padding: 10px 0; }
-.footer-links a { padding: 11px 0; }
+.footer-links a { padding: 11px 0; display: inline-flex; align-items: center; min-height: 44px; }
+/* Tap targets of at least 44px (Apple Human Interface Guidelines) */
+.intro-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-note { padding-bottom: 20px; font-size: 0.8rem; color: var(--muted); }
 
 h1, h2, h3 { line-height: 1.25; font-family: var(--serif); font-weight: 600; }
 h1 { font-size: 2rem; margin: 0.4em 0 0.2em; }
@@ -113,7 +116,7 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 
 /* Chapter page */
 .back { margin: 0 0 8px; font-size: 0.95rem; }
-.back a { text-decoration: none; }
+.back a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
 .summary { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
 .hero { margin: 0 0 24px; }
