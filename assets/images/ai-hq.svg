@@ -35,7 +35,7 @@
   <text x="222" y="122" text-anchor="middle" font-size="12" fill="#6b5e55">a task</text>
   <path d="M360 170 L360 200" stroke="#b4532a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
   <path d="M435 252 L535 200" stroke="#b4532a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-  <text x="500" y="250" text-anchor="middle" font-size="12" fill="#6b5e55">pull request</text>
+  <text x="480" y="216" text-anchor="middle" font-size="12" fill="#6b5e55" transform="rotate(-27.5 480 216)">pull request</text>
   <path d="M540 230 C 420 340, 300 340, 180 235" stroke="#6b5e55" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arrow)"/>
   <text x="360" y="345" text-anchor="middle" font-size="12" fill="#6b5e55">nothing lands until I merge it</text>
 

@@ -141,7 +141,10 @@
 
   
   <figure class="hero">
-    <img src="/assets/images/ai-hq.svg" alt="Diagram: I send a task from my phone, the AI assistant builds it behind guardrails, and changes reach my repo only as pull requests that I merge.">
+    <picture>
+      <source media="(max-width: 600px)" srcset="/assets/images/ai-hq-mobile.svg">
+      <img src="/assets/images/ai-hq.svg" alt="Diagram: I send a task from my phone, the AI assistant builds it behind guardrails, and changes reach my repo only as pull requests that I merge.">
+    </picture>
   </figure>
   
 
@@ -162,7 +165,7 @@
 <ul>
   <li><strong>The rulebook.</strong> Every session, the AI reads a file of rules first: plan before building, work in small steps, check your own work, explain things in plain words, and mark how confident you are. Because each session starts with a blank memory, everything important lives in files, not in chat.</li>
   <li><strong>The workflow.</strong> I describe a task from my phone. The AI works on a separate branch and opens a pull request. I read a short summary, look at the changes, and tap merge if I’m happy. Nothing reaches the main version without me.</li>
-  <li><strong>The locked door.</strong> Written rules depend on the AI following them, so I added a <em>hook</em>: a small script that runs automatically before every command, a bit like a database trigger. It blocks the common ways an agent could push to the main branch, force push or merge. It’s a safety net, not a wall: a determined workaround could still get past it, which is why the main branch also gets GitHub’s own protection once the site is public.</li>
+  <li><strong>The locked door.</strong> Written rules depend on the AI following them, so I added a <em>hook</em>: a small script that runs automatically before every command, a bit like a database trigger. It blocks the common ways an agent could push to the main branch, force push or merge. It’s a safety net, not a wall: a determined workaround could still get past it, which is why GitHub’s own branch protection is now switched on for this site too.</li>
   <li><strong>A second pair of eyes.</strong> For important work, a separate AI reviewer that didn’t build the thing checks it against my rules and tells me what’s risky or missing.</li>
 </ul>
 
