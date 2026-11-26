@@ -163,18 +163,21 @@
 
 <h2 id="how-the-5-words-fit-together">How the 5 words fit together</h2>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> YOU  (phone or laptop)
-   │  type a message
-   ▼
- SESSION  ← one conversation, then it forgets
-   ├─ MODEL    Claude       ← the horse: the brain
-   ├─ HARNESS  Claude Code  ← the gear: tools, files, commands
-   │    └─ GUARD HOOK       ← blocks risky actions
-   └─ opens a REPOSITORY    ← the folder that remembers
-                 │
-                 ▼
-             GITHUB         ← where repositories live
-</code></pre></div></div>
+<div class="flow" role="img" aria-label="Diagram: you type a message into a session. Inside the session, the model (Claude) thinks and the harness (Claude Code) acts, with a guard hook that blocks risky actions. The session opens a repository, which lives on GitHub.">
+  <div class="flow-step"><strong>You</strong><span>on your phone or laptop, type a message</span></div>
+  <div class="flow-arrow" aria-hidden="true">↓</div>
+  <div class="flow-step flow-group">
+    <strong>Session</strong><span>one conversation, then it forgets</span>
+    <div class="flow-inner"><strong>Model · Claude</strong><span>the horse: the brain</span></div>
+    <div class="flow-inner"><strong>Harness · Claude Code</strong><span>the gear: tools, files, commands</span>
+      <div class="flow-inner flow-guard"><strong>Guard hook</strong><span>blocks risky actions</span></div>
+    </div>
+  </div>
+  <div class="flow-arrow" aria-hidden="true">↓ opens</div>
+  <div class="flow-step"><strong>Repository</strong><span>the folder that remembers</span></div>
+  <div class="flow-arrow" aria-hidden="true">↓ lives on</div>
+  <div class="flow-step"><strong>GitHub</strong><span>where repositories live</span></div>
+</div>
 
 <p>You talk to a session. Inside it, the model thinks and the harness acts. The session opens a repository that lives on GitHub, so your work survives after the session is gone.</p>
 
