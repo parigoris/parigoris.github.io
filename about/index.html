@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>About · Leonidas Parigoris</title>
-  <meta name="description" content="A senior data analyst who builds with AI agents carefully: a written rulebook, reviews for every change, and a guard that blocks risky moves.">
+  <meta name="description" content="A senior data analyst who builds with AI agents and tests his own safety setup by attacking it: 76 of 97 attacks got past his guard at first.">
   <link rel="canonical" href="https://parigoris.github.io/about/">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <!-- Social preview (LinkedIn and other link previews) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Leonidas Parigoris">
   <meta property="og:title" content="About · Leonidas Parigoris">
-  <meta property="og:description" content="A senior data analyst who builds with AI agents carefully: a written rulebook, reviews for every change, and a guard that blocks risky moves.">
+  <meta property="og:description" content="A senior data analyst who builds with AI agents and tests his own safety setup by attacking it: 76 of 97 attacks got past his guard at first.">
   <meta property="og:url" content="https://parigoris.github.io/about/">
   <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
   <meta property="og:image:width" content="1200">
@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
   <div class="container header-inner">
     <a class="site-name" href="/">Leonidas Parigoris</a>
@@ -32,58 +33,22 @@
   </div>
 </header>
 
-  <div class="container with-sidebar">
+  
+  
+  <div class="container with-sidebar no-sidebar">
     
-<aside class="toc toc-desktop" aria-label="The journey">
-  <p class="toc-heading"><a href="/journey/">The journey</a></p>
-  
-<ol class="toc-list">
-  
-  
-  
-  
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
-  
-  
-  
-  
-  
-  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>Tokens and cost</a></li>
-  
-  
-  
-  
-  
-  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
-  
-  
-  
-  
-  
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
-  
-  
-  
-  
-  
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
-  
-  
-</ol>
-
-</aside>
-
-
-    <main class="content">
+    <main class="content" id="main" tabindex="-1">
       <h1 id="about">About</h1>
 
-<p>I’m a senior data analyst at a large media company. SQL, BigQuery and machine learning are my day job.</p>
+<p>By day I’m a senior data analyst at a large media company. The job has taught me to trust a number more than a promise, so I test my AI setup the way I’d test a model: I try to break it.</p>
 
-<p>Lately I build with AI agents almost every day: small, real tools that take everyday work off my plate, from my phone as much as from my laptop.</p>
+<p>My agents work behind a small guard script that blocks risky moves, such as saving straight to my main branch. When I had a helper AI attack it, most of its attempts got past. I rebuilt the guard to say no whenever it isn’t sure, and <a href="/journey/ai-hq/">chapter 3</a> has the before and after.</p>
 
-<p>I like to work carefully. My agents follow a written rulebook, every change goes through a review that I approve, and a small guard script blocks the risky moves before they happen. When something goes wrong, I write down the mistake and the rule it taught me. You can see how it all fits together in <a href="/journey/ai-hq/">Working safely</a>.</p>
+<p>I also build things that do real work, mostly from my phone. One is a scheduled agent that looks for useful AI news every Monday and Thursday morning and reports back to me. It can search the web, but it isn’t allowed to change a file or push anything, because an agent that reads the internet shouldn’t also have the power to act. This site came together the same way, in one afternoon, with every change checked in phone screenshots before I merged it.</p>
 
-<p>This site is where I share all of it, so you can learn the same things faster than I did. If you’d like to talk about AI, agents or anything here, find me on <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197">LinkedIn</a>.</p>
+<p>Here I write about building with AI agents for people who have something to build and no coding background, so you can skip the mistakes I’ve already made.</p>
+
+<p>If you’re building something and want to compare notes, say hi on <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197">LinkedIn</a>.</p>
 
     </main>
   </div>
@@ -98,5 +63,6 @@
   <div class="container footer-note">An independent learning journal, not made by or affiliated with Anthropic.</div>
 </footer>
 
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>My AI headquarters: a safe home base for working with Claude · Leonidas Parigoris</title>
-  <meta name="description" content="Before building anything clever with AI, I built the place it works from: a private repo with clear rules, real guardrails and a phone-friendly workflow.">
+  <title>I attacked my own AI guard. 76 of 97 attacks got in. · Leonidas Parigoris</title>
+  <meta name="description" content="My safety guard passed every test I wrote for it. Then I asked an AI agent to attack it, and most of the attacks got through. Here’s how I rebuilt it, and the three layers I trust now.">
   <link rel="canonical" href="https://parigoris.github.io/journey/ai-hq/">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <!-- Social preview (LinkedIn and other link previews) -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Leonidas Parigoris">
-  <meta property="og:title" content="My AI headquarters: a safe home base for working with Claude · Leonidas Parigoris">
-  <meta property="og:description" content="Before building anything clever with AI, I built the place it works from: a private repo with clear rules, real guardrails and a phone-friendly workflow.">
+  <meta property="og:title" content="I attacked my own AI guard. 76 of 97 attacks got in. · Leonidas Parigoris">
+  <meta property="og:description" content="My safety guard passed every test I wrote for it. Then I asked an AI agent to attack it, and most of the attacks got through. Here’s how I rebuilt it, and the three layers I trust now.">
   <meta property="og:url" content="https://parigoris.github.io/journey/ai-hq/">
   <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
   <meta property="og:image:width" content="1200">
@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
   <div class="container header-inner">
     <a class="site-name" href="/">Leonidas Parigoris</a>
@@ -32,6 +33,8 @@
   </div>
 </header>
 
+  
+  
   <div class="container with-sidebar">
     
 <aside class="toc toc-desktop" aria-label="The journey">
@@ -42,7 +45,7 @@
   
   
   
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
   
   
   
@@ -81,7 +84,7 @@
   
   
   
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
   
   
   
@@ -113,88 +116,137 @@
 </details>
 
 
-    <main class="content">
+    <main class="content" id="main" tabindex="-1">
       <article class="chapter">
-  <p class="back"><a href="/journey/">← The journey</a></p>
   
 
 
 
 
   
+  <ol class="progress" aria-label="Where this chapter sits in the journey">
+    <li class="done"><span>1</span><small>Set up</small></li><li class="done"><span>2</span><small>Tokens and cost</small></li><li class="here" aria-current="step"><span>3</span><small>Working safely</small></li><li class=""><span>4</span><small>Memory</small></li><li class=""><span>5</span><small>Automation</small></li>
+  </ol>
   <p class="chapter-label">Chapter 3 · Working safely</p>
-  <h1>My AI headquarters: a safe home base for working with Claude</h1>
-  <p class="meta">18 November 2026</p>
-  <p class="summary">Before building anything clever with AI, I built the place it works from: a private repo with clear rules, real guardrails and a phone-friendly workflow.</p>
+  <h1>I attacked my own AI guard. 76 of 97 attacks got in.</h1>
+  <p class="summary">My safety guard passed every test I wrote for it. Then I asked an AI agent to attack it, and most of the attacks got through. Here’s how I rebuilt it, and the three layers I trust now.</p>
+  
+  <p class="meta">18 November 2026 · 6 min read</p>
 
   
   <aside class="in-short" aria-label="In short">
-    <h2>In short</h2>
+    <h2>The 30-second version</h2>
     <ul>
-      <li><strong>What:</strong> a private home base where an AI agent works for me under clear rules.</li>
-      <li><strong>How:</strong> every change arrives as a pull request, and nothing goes live until I merge it.</li>
-      <li><strong>Surprise:</strong> my own tests all passed, but an independent AI reviewer still found nine gaps in my safety guard.</li>
+      <li>My own tests all passed. An independent AI reviewer still found <strong>9 gaps</strong>, and later an attacking agent got <strong>76 of 97</strong> commands past my guard.</li>
+      <li>I rebuilt the guard to <strong>fail closed</strong>: if it can’t read a command with certainty, the answer is no. It now blocks 94 of the 97.</li>
+      <li>The guard also switched itself off, <strong>twice</strong>, without a word. A one-line test at the start of each session is what caught it.</li>
       
     </ul>
   </aside>
   
 
   
-  <figure class="hero">
-    <picture>
-      <source media="(max-width: 600px)" srcset="/assets/images/ai-hq-mobile.svg">
-      <img src="/assets/images/ai-hq.svg" alt="Diagram: I send a task from my phone, the AI assistant builds it behind guardrails, and changes reach my repo only as pull requests that I merge.">
-    </picture>
-  </figure>
-  
 
   
 
-  <h2 id="what-i-asked-claude">What I asked Claude</h2>
+  <p class="lede">On 18 November, my safety guard passed all 35 tests I had written for it.</p>
 
-<p>I wanted to use AI every day, from my phone, without my laptop on. But before letting an AI agent loose on my files, I asked Claude to help me build a <strong>headquarters</strong> first. Roughly:</p>
+<p>Then I gave it to a reviewer that hadn’t built it, and the reviewer found nine gaps. One of them was simple: switch to the main version of the project first, then send the change from there, and the guard didn’t notice. I fixed all nine, wrote more tests, and watched 72 of them go green. I trusted it.</p>
 
-<blockquote>
-  <p>Set up a private repository that holds my rules, notes, plans and prompts. Never do anything I didn’t agree to. Warn me before you get any new access. Every change goes through a pull request that I approve, and you never publish anything without me.</p>
-</blockquote>
+<p>Eight days later I asked another AI agent to attack it on purpose. It tried 97 ways to get past, and 76 of them worked.</p>
 
-<h2 id="how-it-works">How it works</h2>
+<h2 id="what-the-guard-protects">What the guard protects</h2>
 
-<p>Think of it as an office with a rulebook and a locked door.</p>
+<p>My setup is the one from <a href="/journey/five-words/">chapter 1</a>: a private repository, an agent that works on branches, and pull requests I merge from my phone. The agent’s rules file asks it to plan first and never publish without me, but rules are only words. So I added a <strong>hook</strong>, a small script that Claude Code runs before every command the agent tries. That hook is my guard, and it blocks three moves: pushing straight to main, force-pushing over the history, and merging a pull request on its own.</p>
+
+<h2 id="97-attacks-76-got-through">97 attacks, 76 got through</h2>
+
+<p>On 26 November a test push found the first hole. A push to main, tucked inside a small shell loop, went straight past the guard. The guard checked the first word of each command for <code class="language-plaintext highlighter-rouge">git</code>, and in a loop the first word is <code class="language-plaintext highlighter-rouge">do</code>. It was a dry run, a rehearsal that stops before anything is sent, so nothing was pushed. But a two-letter word had fooled the guard, and I stopped assuming the rest of it was fine.</p>
+
+<p>So I set up a <strong>red team</strong>, an agent whose only job is to play the attacker. My go-ahead was “go with any ideas, no need to ask me”. It wrote 97 attack commands and fed each one to a frozen copy of the guard, which only judged them. None of them ever ran.</p>
+
+<p>76 got through. Most were the same forbidden push in a disguise:</p>
 
 <ul>
-  <li><strong>The rulebook.</strong> Every session, the AI reads a file of rules first: plan before building, work in small steps, check your own work, explain things in plain words, and mark how confident you are. Because each session starts with a blank memory, everything important lives in files, not in chat.</li>
-  <li><strong>The workflow.</strong> I describe a task from my phone. The AI works on a separate branch and opens a pull request. I read a short summary, look at the changes, and tap merge if I’m happy. Nothing reaches the main version without me.</li>
-  <li><strong>The locked door.</strong> Written rules depend on the AI following them, so I added a <em>hook</em>: a small script that runs automatically before every command, a bit like a database trigger. It blocks the common ways an agent could push to the main branch, force push or merge. It’s a safety net, not a wall: a determined workaround could still get past it, which is why GitHub’s own branch protection is now switched on for this site too.</li>
-  <li><strong>A second pair of eyes.</strong> For important work, a separate AI reviewer that didn’t build the thing checks it against my rules and tells me what’s risky or missing.</li>
+  <li>wrapped inside another harmless program, such as <code class="language-plaintext highlighter-rouge">nice</code> or <code class="language-plaintext highlighter-rouge">timeout</code>, so the guard saw that program’s name first</li>
+  <li>with the flag shortened, <code class="language-plaintext highlighter-rouge">--forc</code> instead of <code class="language-plaintext highlighter-rouge">--force</code>, which git still accepts and my guard didn’t recognise</li>
+  <li>renamed with a git alias, so the word “push” never appeared at all</li>
+  <li>aimed at main through a roundabout address the guard didn’t expect</li>
 </ul>
+
+<p>A few skipped git entirely and asked GitHub to approve or review a pull request through a different tool.</p>
+
+<p class="pullquote">My tests checked the attacks I could imagine. The red team didn’t share my imagination.</p>
+
+<h2 id="unknown-means-no">Unknown means no</h2>
+
+<p>The 18 November fixes had already made the guard fail closed where it looked: if it found a git command it couldn’t read with certainty, it blocked it, and all 72 tests passed. The trouble was where it didn’t look. A push hidden inside a loop, a wrapper or an alias never registered as a git command at all, so it was allowed by default. Each fix after that would only have banned one more trick, and the attacker only needs the next one.</p>
+
+<p>So the 26 November rebuild extended fail closed to everything. Any command that mentions a push or GitHub’s command-line tool must now be one plain command in a form the guard knows is safe, whatever wraps it. Anything else is blocked, even when it’s harmless. Against the same 97 attacks, it now blocks 94. The 3 left are harmless commands.</p>
+
+<figure class="diagram">
+  <img src="/assets/images/ai-hq-red-team.svg" alt="Bar chart of 97 attack commands fed to my guard. Before the rebuild, 76 got through and 21 were blocked. After the rebuild, 94 were blocked and 3 were left, all harmless commands." width="560" height="490" />
+  <figcaption class="figure-note">The same 97 attacks, before and after the guard learned to say no when it isn’t sure.</figcaption>
+</figure>
+
+<p>There’s a price. A note that only mentions a push, such as “don’t push to main”, now gets blocked too, so I write those another way.</p>
+
+<h2 id="three-layers-three-different-jobs">Three layers, three different jobs</h2>
+
+<p>Even the rebuilt guard reads text, and text can hide things. A command written into a script file and run later is invisible to it. So I now think of safety as three layers, each one catching what gets past the one before.</p>
+
+<figure class="diagram">
+  <img src="/assets/images/ai-hq-layers.svg" alt="Three safety layers. One, the rules: a sign on the door. They stop an agent that reads and obeys, but can't force anything. Two, the guard hook: checks every command first. It stops pushes to main, force pushes and merges, but can't see inside a saved script or work if it isn't loaded. Three, the GitHub ruleset: the wall on GitHub's side. It stops any change to main without a pull request, even mine, but can't protect a private repository on GitHub's free plan." width="560" height="780" />
+  <figcaption class="figure-note">What gets past one layer falls to the next. Only the third sits on GitHub, outside the agent's session.</figcaption>
+</figure>
+
+<p>The rules work like a sign on the door: the agent reads them and mostly follows them, but nothing forces it to.</p>
+
+<p>The hook checks every command before it runs. It catches honest mistakes and most tricks, but only while it’s loaded, and the mistake below shows how easily it stops loading.</p>
+
+<p>The <strong>ruleset</strong> is a setting on GitHub itself, so it doesn’t care which command or trick reached it (<a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">about rulesets</a>). On this website’s repository, nothing gets into main without a pull request, and nobody can force-push or delete it. The list of people allowed to bypass it is empty, me included.</p>
+
+<p>The catch is that GitHub’s free plan doesn’t enforce rulesets on private repositories. My public website has one. My private home base doesn’t, so there the guard is the last line, which is why I attack it and test it so often.</p>
 
 <aside class="mistake" aria-label="My mistake">
-  <h2>My mistake</h2>
-  <p>A few days after I built the guard, I opened a session with two repositories in it. The guard quietly stopped loading, and nothing told me. I only found out because I tested it. Everything I thought was locked had been open the whole time.</p>
-  <p class="mistake-rule"><strong>The rule it gave me:</strong> every session starts with a test push to the main branch, and it must be blocked. If it isn’t, all other work stops until the guard is back.</p>
+  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">18 and 26 Nov 2026</span></p>
+  <p class="mistake-title">My guard switched itself off. Twice.</p>
+  <p class="mistake-text">On 18 November, the day I built the guard, I opened a session with two repositories in it. The guard quietly stopped loading, because the session’s main folder moved away from the settings file that switches it on. A test push to main went through, as a dry run, so nothing was sent. I fixed it and wrote a start-of-session check. On 26 November it happened again, after I attached two repositories in the middle of a session. Another test push caught it, and GitHub confirmed that main hadn’t changed. Nothing warned me either time. Only the test did.</p>
+  <p class="mistake-rule"><span>The rule now</span>Every session starts with a test push to main, and it must be blocked. I repeat it every time a repository is added. If it goes through, all other work stops until the guard is back.</p>
 </aside>
-
-<h2 id="what-i-learned">What I learned</h2>
-
-<ul>
-  <li><strong>Rules are a sign on the door. Hooks are the lock.</strong> If something really matters, enforce it, don’t just write it down.</li>
-  <li><strong>My own tests weren’t enough.</strong> The guard passed every test I wrote, and then an independent reviewer found nine gaps in it, including one way around it that I’d never have thought of. Fixing them taught me more than building it did!</li>
-  <li><strong>Least access is a habit, not a setting.</strong> Each new permission now comes with a short warning: what it unlocks, what could go wrong, and how to undo it.</li>
-  <li><strong>Slow at the start makes everything after it faster.</strong> With the base in place, every new project starts from rules and guardrails I already trust.</li>
-</ul>
 
 <h2 id="try-it-yourself">Try it yourself</h2>
 
-<p>Paste this at the start of your next chat with an AI agent:</p>
+<p>This is the test that caught my guard twice. A dry run asks git to rehearse sending your work to the main version, then stop before anything changes on GitHub. If you have any guard against pushing to main, the rehearsal must be blocked. Paste this at the start of a session:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Before you change anything, write a short plan and wait for my OK.
-Work in small steps, and check your own work after each one.
-Explain what you did in plain words, and tell me how confident you are.
-Never publish, delete or push anything without asking me first.
-</code></pre></div></div>
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Start-of-session test</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>Before we start, prove that my safety guard is on.
+Run this dry-run push to the main branch: git push --dry-run origin HEAD:main
+It must be blocked. If it is not blocked, stop and tell me before doing anything else.
+Repeat this check every time a new repository is added to this session.</code></pre>
+</div>
 
-<p>It takes ten seconds. The agent gets a little slower to act, and a lot easier to trust.</p>
+<p>When Claude asks to run the command, read it before you approve it, and make sure <code class="language-plaintext highlighter-rouge">--dry-run</code> is still in it. Without that flag, it’s a real push.</p>
+
+<p>If you don’t have a guard yet, the rehearsal won’t be blocked, and that’s a useful answer too. For a public repository, a ruleset on GitHub is free, and it’s the layer to add first. For the rules that go in your first instruction file, see the first task in <a href="/journey/five-words/">chapter 1</a>.</p>
+
+<h2 id="check-yourself">Check yourself</h2>
+
+<div class="quiz">
+  <details>
+    <summary>Your safety check passes every test you wrote. What’s the next test?</summary>
+    <p>Ask something that didn’t build it to attack it: a reviewer, or an agent playing the attacker. My guard passed all 35 of my tests, then a reviewer found 9 gaps, and later a red team got 76 of 97 attacks past it.</p>
+  </details>
+  <details>
+    <summary>Why does a guard that fails closed block some harmless commands?</summary>
+    <p>Because it says no to anything it can’t read with certainty. Blocking a harmless note now and then is the price of not letting 76 attacks through.</p>
+  </details>
+  <details>
+    <summary>The agent finds a trick your hook doesn’t know. Which layer still stops it?</summary>
+    <p>The GitHub ruleset, because it sits on GitHub’s side and checks what arrives, not how the command was written. On GitHub’s free plan, that only works for public repositories.</p>
+  </details>
+</div>
 
 
   
@@ -228,5 +280,6 @@ Never publish, delete or push anything without asking me first.
   <div class="container footer-note">An independent learning journal, not made by or affiliated with Anthropic.</div>
 </footer>
 
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

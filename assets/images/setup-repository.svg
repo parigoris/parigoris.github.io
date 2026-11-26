@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16">
+  <title id="t">A repository is a folder with history</title>
+  <desc id="d">A folder called my-project holds two files, README.md and CLAUDE.md. Under it, a history lists three saved changes, newest first: Add rules to CLAUDE.md, Fix a typo in README, and Create repository. You can go back to any of them.</desc>
+  <!-- Colours: ink = names, muted = side notes, edge = file outlines, accent = history (what makes it more than a folder).
+       Contrast, light on #faf6f0: ink 14.2:1, muted 5.8:1, accent 4.6:1. Dark on #2a231e: ink 12.6:1, muted 6.9:1, accent 6.2:1. -->
+  <style>
+    .bg { fill: #faf6f0; } .box { fill: #ffffff; } .ink { fill: #2b2420; } .mut { fill: #6b5e55; } .acc { fill: #b4532a; }
+    .s-ink { stroke: #2b2420; } .s-edge { stroke: #d9cfc4; } .s-acc { stroke: #b4532a; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2a231e; } .box { fill: #262019; } .ink { fill: #efe7df; } .mut { fill: #b9aa9d; } .acc { fill: #e3906a; }
+      .s-ink { stroke: #efe7df; } .s-edge { stroke: #4d433b; } .s-acc { stroke: #e3906a; }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="400" height="420" rx="16"/>
+
+  <!-- Folder -->
+  <path class="box s-ink" d="M24 40 h110 l18 20 h224 v118 a10 10 0 0 1 -10 10 h-332 a10 10 0 0 1 -10 -10 z" stroke-width="2"/>
+  <text x="40" y="92"><tspan class="ink" font-size="18" font-weight="700">my-project</tspan><tspan class="mut"> (the repository)</tspan></text>
+  <!-- files -->
+  <rect class="bg s-edge" x="40" y="110" width="150" height="50" rx="8" stroke-width="2"/>
+  <text class="ink" x="56" y="141">README.md</text>
+  <rect class="bg s-edge" x="206" y="110" width="150" height="50" rx="8" stroke-width="2"/>
+  <text class="ink" x="222" y="141">CLAUDE.md</text>
+
+  <!-- History -->
+  <text class="acc" x="24" y="226" font-size="18" font-weight="700">History (newest first)</text>
+  <line class="s-acc" x1="44" y1="252" x2="44" y2="364" stroke-width="3"/>
+  <circle class="acc" cx="44" cy="256" r="9"/>
+  <text class="ink" x="66" y="262">Add rules to CLAUDE.md</text>
+  <circle class="box s-acc" cx="44" cy="308" r="9" stroke-width="3"/>
+  <text class="ink" x="66" y="314">Fix a typo in README</text>
+  <circle class="box s-acc" cx="44" cy="360" r="9" stroke-width="3"/>
+  <text class="ink" x="66" y="366">Create repository</text>
+
+  <text class="mut" x="24" y="400">Each line is a saved change (a commit).</text>
+</svg>

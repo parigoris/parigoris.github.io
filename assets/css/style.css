@@ -11,8 +11,40 @@
   --bg: #ffffff;
   --bg-card: #ffffff;
   --bg-soft: #faf6f0;
-  --radius: 4px;
+  /* Two corner sizes only: small for controls and inner boxes, large for cards (plus 999px pills and 50% circles) */
+  --radius-sm: 6px;
+  --radius-lg: 12px;
   --serif: ui-serif, "New York", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --line-strong: #d9cfc4;
+  /* Context pile chart: grey for the current task, the accent for waste (emphasis pattern: one hue plus grey).
+     Grey blocks on the cream card: 3.1:1 (WCAG 1.4.11 needs 3:1 for chart marks). */
+  --pile-current: #968a80;
+  /* Darker accent for small text on the pale accent fill (the "In short" numbers): 5.6:1 on #f8ece4; the plain accent is only 4.3:1 there */
+  --accent-strong: #9a4422;
+  --term-bg: #2b2420;
+  --term-text: #f6efe8;
+  --on-accent: #ffffff;
+}
+
+/* Dark mode: follows the phone or computer setting. A warm dark brown, not black (ideas.md, "Optional dark mode").
+   Contrast on #1f1a17 (checked 2026-11-26): text 14.1:1, grey text 7.6:1, accent 6.9:1; button text on accent 6.9:1. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #e3906a;
+    --accent-soft: #3a2a22;
+    --text: #efe7df;
+    --muted: #b9aa9d;
+    --line: #3a322c;
+    --line-strong: #4d433b;
+    --bg: #1f1a17;
+    --bg-card: #262019;
+    --bg-soft: #2a231e;
+    --pile-current: #7d7064; /* 3.2:1 on the dark card #2a231e */
+    --accent-strong: #e3906a; /* 5.5:1 on the dark pale accent #3a2a22 */
+    --term-bg: #120f0d;
+    --on-accent: #1f1a17;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -32,23 +64,28 @@ body {
 
 /* Sidebar with the chapter list (docs-style). Desktop: fixed column on the left. Phone: a "The journey" menu to tap open. */
 .with-sidebar { display: grid; grid-template-columns: 210px minmax(0, 720px); gap: 48px; padding-top: 32px; padding-bottom: 64px; }
+/* Pages without the chapter menu (home, About): one centred column, so no empty column is left on the left */
+.with-sidebar.no-sidebar { grid-template-columns: minmax(0, 720px); justify-content: center; }
 .content { min-width: 0; }
+.content:focus { outline: none; }
+/* Line length: about 68 characters for reading text (65 to 75 is the comfortable range). 34em measured 66 to 70 characters per line in this font. Charts, code and boxes still use the full column. */
+.content > p, .content > ul, .content > ol, .chapter > p, .chapter > ul, .chapter > ol, .chapter > h2, .chapter > h3 { max-width: 34em; }
 .toc-desktop { position: sticky; top: 24px; align-self: start; padding-top: 14px; }
 .toc-heading { margin: 0 0 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
 .toc-heading a { color: var(--muted); text-decoration: none; }
 .toc-list { list-style: none; margin: 0; padding: 0; }
-.toc-list a { display: flex; gap: 10px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--text); text-decoration: none; font-size: 0.95rem; line-height: 1.35; }
+.toc-list a { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--text); text-decoration: none; font-size: 0.95rem; line-height: 1.35; }
 .toc-list a:hover { color: var(--accent); }
 .toc-list a.active { border-left-color: var(--accent); color: var(--accent); font-weight: 600; background: var(--bg-soft); }
 .toc-num { flex: none; min-width: 1.2em; color: var(--muted); }
-.toc-soon { display: flex; gap: 10px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--muted); font-size: 0.95rem; line-height: 1.35; }
+.toc-soon { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 10px; border-left: 2px solid var(--line); color: var(--muted); font-size: 0.95rem; line-height: 1.35; }
 .toc-soon small { margin-left: auto; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .toc-mobile { display: none; }
 @media (max-width: 860px) {
   .with-sidebar { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 16px; }
   .toc-desktop { display: none; }
-  .toc-mobile { display: block; margin-bottom: 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
-  .toc-mobile summary { padding: 12px 14px; font-weight: 600; cursor: pointer; min-height: 44px; box-sizing: border-box; }
+  .toc-mobile { display: block; margin-bottom: 8px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-soft); }
+  .toc-mobile summary { padding: 12px 44px 12px 14px; font-weight: 600; cursor: pointer; min-height: 44px; box-sizing: border-box; }
   .toc-mobile .toc-list { padding: 0 8px 8px; }
   .toc-mobile .toc-list a { padding: 12px 10px; min-height: 44px; }
 }
@@ -56,7 +93,7 @@ body {
 a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 /* Keyboard focus: a clear 2px terracotta ring (WCAG 2.4.7 and 2.4.13; 5.0:1 on white) */
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-sm); }
 /* Tap targets at least 44px tall on phones (Apple HIG; WCAG 2.5.8 needs 24px) */
 .site-name, .site-nav a, .footer-links a, .more-link { display: inline-block; padding: 10px 0; }
 .footer-links a { padding: 11px 0; display: inline-flex; align-items: center; min-height: 44px; }
@@ -64,9 +101,43 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-
 .intro-links a { display: inline-flex; align-items: center; min-height: 44px; }
 .footer-note { padding-bottom: 20px; font-size: 0.8rem; color: var(--muted); }
 
+/* Skip link: hidden until a keyboard user tabs to it, then it jumps past the header and menu (WCAG 2.4.1) */
+.skip { position: absolute; left: 12px; top: -100px; z-index: 10; padding: 10px 16px; border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; }
+.skip:focus { top: 12px; }
+
+/* One "+" / "−" pattern for every tap-to-open box (quiz, chapter menu, chart numbers) */
+.toc-mobile summary, .pile-table summary { list-style: none; position: relative; }
+.toc-mobile summary::-webkit-details-marker, .pile-table summary::-webkit-details-marker { display: none; }
+.toc-mobile summary::after, .pile-table summary::after { content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 1.35rem; font-weight: 400; line-height: 1; color: var(--accent); }
+.toc-mobile[open] summary::after, .pile-table[open] summary::after { content: "−"; }
+
 h1, h2, h3 { line-height: 1.25; font-family: var(--serif); font-weight: 600; }
 h1 { font-size: 2rem; margin: 0.4em 0 0.2em; }
 h2 { font-size: 1.3rem; margin-top: 2em; }
+
+/* Home page: the promise, then its 3 parts (learn first, skip, mistakes) */
+.hero-home { padding: 12px 0 8px; }
+.hero-home h1 { font-size: 2.7rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0.2em 0 0.35em; text-wrap: balance; }
+.kicker { margin: 0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
+.hero-home .lead { font-family: var(--serif); font-size: 1.35rem; line-height: 1.45; color: var(--text); max-width: 30em; text-wrap: pretty; }
+.byline { margin: 18px 0 0; font-size: 0.9rem; color: var(--muted); }
+.home-block { margin-top: 48px; }
+.home-block h2 { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; font-size: 1.5rem; }
+/* Retired: the site has one number style (plain accent numerals). Hidden until the markup is removed from index.md. */
+.step { display: none; }
+.block-sub { margin: 0; color: var(--muted); }
+.skip-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.skip-list li { position: relative; padding: 12px 14px 12px 44px; border-radius: var(--radius-lg); background: var(--bg-soft); }
+.skip-list li::before { content: ""; position: absolute; left: 16px; top: 1.15em; width: 14px; height: 2px; background: var(--muted); }
+.skip-list strong { display: block; }
+.mistake-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.mistake-card { display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-card); color: var(--text); text-decoration: none; transition: border-color 0.15s, transform 0.15s; }
+.mistake-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.mistake-card strong { font-family: var(--serif); font-size: 1.1rem; line-height: 1.3; }
+.mistake-card span { font-size: 0.9rem; color: var(--muted); }
+.mistake-card .mc-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); }
+@media (max-width: 760px) { .mistake-cards { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .hero-home h1 { font-size: 2.05rem; } .hero-home .lead { font-size: 1.15rem; } }
 
 /* Header */
 .site-header { border-bottom: 1px solid var(--line); }
@@ -85,7 +156,7 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 
 /* Chapter list */
 .cards { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; }
-.card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-card); transition: border-color 0.15s, box-shadow 0.15s; }
+.card { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-card); transition: border-color 0.15s, box-shadow 0.15s; }
 .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180, 83, 42, 0.08); }
 .card a { display: block; padding: 18px 20px; color: inherit; text-decoration: none; }
 .card h3 { margin: 0 0 4px; color: var(--text); font-size: 1.2rem; }
@@ -107,37 +178,39 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 
 /* Previous / next chapter */
 .chapter-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
-.chapter-nav a { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--text); font-size: 0.95rem; }
+.chapter-nav a { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 0.95rem; }
 .chapter-nav a span { display: block; font-size: 0.8rem; color: var(--accent); margin-bottom: 4px; }
-.chapter-nav .soon { display: block; padding: 12px 14px; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--muted); font-size: 0.95rem; }
+.chapter-nav .soon { display: block; padding: 12px 14px; border: 1px dashed var(--line); border-radius: var(--radius-sm); color: var(--muted); font-size: 0.95rem; }
 .chapter-nav .soon span { display: block; font-size: 0.8rem; margin-bottom: 4px; }
 .chapter-nav .next { grid-column: 2; text-align: right; }
-@media (max-width: 520px) { .chapter-nav { grid-template-columns: 1fr; } .chapter-nav .next { grid-column: 1; } }
+@media (max-width: 520px) { .chapter-nav { grid-template-columns: 1fr; } .chapter-nav .next { grid-column: 1; text-align: left; } }
 
 /* Chapter page */
-.back { margin: 0 0 8px; font-size: 0.95rem; }
-.back a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
 .summary { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
 .hero { margin: 0 0 24px; }
-.hero img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
-.chapter blockquote { margin: 16px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+.hero img { display: block; width: 100%; max-width: 480px; height: auto; }
+/* Diagram figure: an SVG with its own rounded card, plus a short note under it. 480px keeps the 14px-minimum text from growing huge on desktop. */
+.diagram { margin: 28px 0; }
+.diagram img { display: block; width: 100%; max-width: 480px; height: auto; border: 0; }
+.diagram .figure-note { max-width: 480px; margin-top: 8px; }
+.chapter blockquote { margin: 16px 0; padding: 12px 16px; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 .chapter blockquote p { margin: 0; }
 /* List points: less space than between paragraphs, so a list reads as one group (GOV.UK spaced lists) */
 .chapter ul, .chapter ol { padding-left: 1.25em; }
 .chapter li + li { margin-top: 0.75em; }
 
 /* "In short" box: lets scanning readers get the point in 3 lines (standards.md, Writing for readers) */
-.in-short { margin: 0 0 28px; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius); }
+.in-short { margin: 0 0 28px; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius-sm); }
 .in-short h2 { font-family: inherit; margin: 0 0 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .in-short ul { margin: 0; padding-left: 1.1em; }
 .in-short li + li { margin-top: 0.5em; }
 
 /* Code blocks wrap instead of scrolling sideways on a phone */
-pre { margin: 16px 0; padding: 14px 16px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { margin: 16px 0; padding: 14px 16px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); white-space: pre-wrap; overflow-wrap: anywhere; }
 pre code { background: none; border: 0; padding: 0; font-size: 0.9em; }
 
-.button { display: inline-block; padding: 10px 16px; background: var(--accent); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+.button { display: inline-block; padding: 10px 16px; background: var(--accent); color: var(--on-accent); border: 0; border-radius: var(--radius-sm); text-decoration: none; font: inherit; font-weight: 600; cursor: pointer; }
 .button:hover { opacity: 0.92; }
 
 /* Home first screen: one main button, one plain link (standards.md, Lists and choices) */
@@ -146,14 +219,19 @@ pre code { background: none; border: 0; padding: 0; font-size: 0.9em; }
 
 /* "My mistake" box: one real mistake per chapter and the rule it led to.
    Same cream box as "In short", but a grey edge, so the accent edge stays unique to "In short". */
-.mistake { margin: 32px 0; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--muted); border-radius: var(--radius); }
-.mistake h2 { font-family: inherit; margin: 0 0 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.mistake { margin: 40px 0; padding: 20px 22px 18px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: 0 1px 0 var(--line), 0 10px 30px -18px rgba(43, 36, 32, 0.35); }
 .mistake p { margin: 0; }
-.mistake p + p { margin-top: 0.75em; }
+.mistake-kicker { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px !important; }
+.mistake-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--text); color: var(--bg); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.mistake-date { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.mistake-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.3; margin-bottom: 8px !important; }
+.mistake-text { color: var(--text); }
+.mistake-rule { margin-top: 14px !important; padding-top: 14px; border-top: 1px dashed var(--line-strong); }
+.mistake-rule span { display: block; margin-bottom: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 
 /* Flow diagram: stacked boxes that fit any screen width (no ASCII art, which wraps on phones) */
 .flow { margin: 24px 0; max-width: 32em; }
-.flow-step, .flow-inner { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; background: var(--bg-card); }
+.flow-step, .flow-inner { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 14px; background: var(--bg-card); }
 .flow-step strong, .flow-inner strong { display: block; }
 .flow-step span, .flow-inner span { display: block; color: var(--muted); font-size: 0.92em; }
 .flow-group { background: var(--bg-soft); }
@@ -161,11 +239,11 @@ pre code { background: none; border: 0; padding: 0; font-size: 0.9em; }
 .flow-guard { border-left: 3px solid var(--accent); }
 .flow-arrow { text-align: center; color: var(--muted); padding: 4px 0; font-size: 0.92em; }
 
-code { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 5px; padding: 0.1em 0.35em; font-size: 0.9em; }
+code { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0.1em 0.35em; font-size: 0.9em; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
-.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; padding-bottom: 28px; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; padding-bottom: 4px; }
 .footer-links { display: flex; gap: 16px; }
 .footer-inner { align-items: center; }
 
@@ -174,4 +252,138 @@ code { background: var(--bg-soft); border: 1px solid var(--line); border-radius:
   h1 { font-size: 1.7rem; }
   .intro h1 { font-size: 2.3rem; }
   .site-nav { gap: 14px; }
+}
+
+/* ---------- Chapter design (redesign, 2026-11-26) ---------- */
+
+/* Journey progress map: 5 stops, the current one filled */
+.progress { list-style: none; display: flex; margin: 8px 0 22px; padding: 0; }
+.chapter .progress li + li { margin-top: 0; }
+.progress li { flex: 1; min-width: 0; position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.progress li::before { content: ""; position: absolute; z-index: 0; top: 13px; left: -50%; width: 100%; height: 2px; background: var(--line); }
+.progress li:first-child::before { display: none; }
+.progress li.done::before, .progress li.here::before { background: var(--accent); }
+.progress span { position: relative; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--muted); background: var(--bg); color: var(--muted); font-size: 0.8rem; font-weight: 700; }
+.progress .done span { border-color: var(--accent); color: var(--accent); }
+.progress .here span { border-color: var(--accent); background: var(--accent); color: var(--on-accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.progress small { font-size: 0.75rem; line-height: 1.25; color: var(--muted); max-width: 8em; }
+.progress .here small { color: var(--text); font-weight: 600; }
+
+/* Chapter header */
+.chapter h1 { font-size: 2.5rem; line-height: 1.12; letter-spacing: -0.015em; margin: 0.25em 0 0.35em; text-wrap: balance; }
+.chapter .summary { font-family: var(--serif); font-size: 1.25rem; line-height: 1.5; color: var(--muted); margin: 0 0 10px; text-wrap: pretty; }
+.chapter .meta { font-size: 0.85rem; letter-spacing: 0.02em; margin: 0 0 28px; }
+.chapter h2 { font-size: 1.55rem; line-height: 1.2; margin: 2.2em 0 0.6em; text-wrap: balance; }
+.chapter p, .chapter li { text-wrap: pretty; }
+
+/* Opening line: larger serif, sets the scene */
+.lede { font-family: var(--serif); font-size: 1.35rem; line-height: 1.45; color: var(--text); margin-top: 0; }
+
+/* "The 30-second version": numbered points */
+.in-short { border-left: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 0 0 var(--radius-lg) var(--radius-lg); padding: 16px 20px 18px; }
+.chapter .in-short h2 { margin: 0 0 10px; font-size: 0.8rem; line-height: 1.3; }
+.in-short ul { list-style: none; padding: 0; counter-reset: point; }
+.in-short li { counter-increment: point; position: relative; padding-left: 2em; }
+.in-short li::before { content: counter(point); position: absolute; left: 0; top: 0.15em; width: 1.45em; height: 1.45em; border-radius: 50%; background: var(--accent-soft); color: var(--accent-strong); font-size: 0.8em; font-weight: 700; display: grid; place-items: center; }
+
+/* Pull quote */
+.pullquote { margin: 36px 0; padding: 4px 0 4px 22px; border-left: 4px solid var(--accent); font-family: var(--serif); font-size: 1.45rem; line-height: 1.4; font-weight: 600; color: var(--text); text-wrap: balance; }
+
+/* Token strip */
+.tokens { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 6px; font-family: var(--mono); font-size: 1.05rem; }
+.tokens span { padding: 6px 10px; border-radius: var(--radius-sm); background: var(--accent-soft); border: 1px solid var(--line-strong); white-space: pre; }
+.tokens span:nth-child(even) { background: var(--bg-soft); }
+.figure-note { margin-top: 0; font-size: 0.85rem; color: var(--muted); }
+
+/* Context pile (interactive figure, assets/js/context-pile.js) */
+.pile { margin: 28px 0; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-card); }
+.pile-head { margin: 0 0 14px; color: var(--muted); font-size: 0.95rem; }
+.pile-head strong { display: block; color: var(--text); font-family: var(--serif); font-size: 1.15rem; margin-bottom: 2px; }
+/* One chart per row at every width: side by side, the chart text was too small to read */
+.pile-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; max-width: 640px; }
+.pile-card { padding: 12px 12px 10px; border-radius: var(--radius-sm); background: var(--bg-soft); }
+.pile-title { margin: 0 0 4px; font-weight: 600; font-size: 0.95rem; }
+.pile-svg { display: block; width: 100%; height: auto; }
+.pile-blk.current { fill: var(--pile-current); }
+.pile-blk.waste { fill: var(--accent); }
+.pile-bar:hover .pile-blk { opacity: 0.8; }
+.pile-tick, .pile-band, .pile-band-sub, .pile-axis { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; fill: var(--muted); }
+.pile-tick { font-size: 14px; font-variant-numeric: tabular-nums; }
+.pile-band { font-size: 15px; font-weight: 600; }
+.pile-band-sub { font-size: 14px; }
+.pile-axis { font-size: 15px; }
+.pile-yaxis { margin: 0; font-size: 0.75rem; color: var(--muted); }
+.pile-grid-line { stroke: var(--line); stroke-width: 1; }
+.pile-divider { stroke: var(--line-strong); stroke-width: 1; }
+.pile-divider.fresh { stroke: var(--text); stroke-width: 1.5; }
+.pile-base { stroke: var(--line-strong); stroke-width: 1; }
+.pile-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; padding: 0; font-size: 0.88rem; }
+.chapter .pile-legend li + li { margin-top: 0; }
+.pile-legend li { display: flex; align-items: center; gap: 8px; }
+.pile-legend .key { flex: none; width: 14px; height: 14px; border-radius: 2px; /* matches the rx=2 corners of the chart blocks it stands for */ }
+.pile-legend .key.current { background: var(--pile-current); }
+.pile-legend .key.waste { background: var(--accent); }
+.pile-total { margin: 6px 0 0; font-size: 0.92rem; color: var(--muted); }
+.pile-total span { font-family: var(--serif); font-size: 1.9rem; font-weight: 600; color: var(--text); margin-right: 4px; font-variant-numeric: tabular-nums; }
+.pile-total b { color: var(--text); }
+.pile-table { margin-top: 12px; font-size: 0.88rem; }
+.pile-table summary { cursor: pointer; color: var(--accent); min-height: 44px; display: flex; align-items: center; padding-right: 44px; }
+.pile-table table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.pile-table th, .pile-table td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; }
+.pile-table th:first-child, .pile-table td:first-child { text-align: left; }
+.pile-table th { font-weight: 600; vertical-align: bottom; }
+.pile-table .sum td { font-weight: 700; border-bottom: 0; }
+.pile-controls { display: none; margin-top: 14px; align-items: center; gap: 8px 14px; flex-wrap: wrap; }
+.pile.is-live .pile-controls { display: flex; }
+.pile-controls .button { min-height: 44px; }
+.pile-status { margin: 0; font-size: 0.9rem; color: var(--muted); }
+.pile-note { margin: 12px 0 0; font-size: 0.8rem; color: var(--muted); }
+@media (max-width: 600px) {
+  .pile { padding: 14px; }
+  .pile-grid { gap: 10px; }
+}
+
+/* Habits, grouped by when they help */
+.habits { margin: 20px 0 8px; display: grid; gap: 14px; }
+.habit-group { padding: 4px 0 0 18px; border-left: 2px solid var(--line); }
+.chapter .habit-when { margin: 0 0 10px; font-family: inherit; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.chapter .habit-list { margin: 0; padding: 0; list-style: none; counter-reset: habit; }
+.chapter .habit-list li { position: relative; margin: 0 0 14px; padding-left: 2.2em; counter-increment: habit; }
+.habit-list li::before { content: counter(habit); position: absolute; left: 0; top: -0.05em; font-family: var(--serif); font-size: 1.5rem; line-height: 1.1; font-weight: 600; color: var(--accent); }
+.habit-list li strong { display: block; font-size: 1.05rem; }
+.habit-aside { margin: 4px 0 0; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--bg-soft); font-size: 0.95rem; }
+
+/* Try it: a terminal card with a copy button */
+.try { margin: 14px 0 22px; border-radius: var(--radius-lg); overflow: hidden; background: var(--term-bg); color: var(--term-text); box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.6); }
+.try-bar { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 2px 4px 2px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8rem; }
+.try-dots { display: inline-flex; gap: 5px; }
+.try-dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 255, 255, 0.22); }
+.try-label { flex: 1; color: rgba(246, 239, 232, 0.78); }
+.try-copy { min-height: 44px; padding: 4px 12px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: var(--radius-sm); background: transparent; color: var(--term-text); font: inherit; font-size: 0.8rem; cursor: pointer; }
+.try-copy:hover { background: rgba(255, 255, 255, 0.08); }
+.try-code { margin: 0; padding: 14px 16px 16px; background: transparent; border: 0; border-radius: 0; color: var(--term-text); font-family: var(--mono); font-size: 0.95rem; line-height: 1.55; }
+.try-code code { color: inherit; background: none; border: 0; padding: 0; }
+
+/* Check yourself: tap to reveal */
+.quiz { display: grid; gap: 10px; margin: 16px 0; }
+.quiz details { border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-card); }
+.quiz summary { list-style: none; cursor: pointer; padding: 13px 44px 13px 16px; position: relative; font-weight: 600; line-height: 1.4; min-height: 44px; }
+.quiz summary::-webkit-details-marker { display: none; }
+.quiz summary::after { content: "+"; position: absolute; right: 16px; top: 11px; font-size: 1.35rem; line-height: 1; color: var(--accent); }
+.quiz details[open] summary::after { content: "−"; }
+.quiz details[open] { border-color: var(--line-strong); background: var(--bg-soft); }
+.quiz details p { margin: 0; padding: 0 16px 16px; }
+
+button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+@media (max-width: 480px) {
+  .chapter h1 { font-size: 2rem; }
+  .chapter .summary { font-size: 1.12rem; }
+  .lede { font-size: 1.2rem; }
+  .pullquote { font-size: 1.25rem; }
+  /* Phone: only the current stop keeps its label, so the labels never shrink below 0.75rem; the others stay for screen readers */
+  .progress li:not(.here) small { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .progress .here small { max-width: none; white-space: nowrap; }
+  .progress li:first-child.here small { align-self: flex-start; }
+  .progress li:last-child.here small { align-self: flex-end; }
 }

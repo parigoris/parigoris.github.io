@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 418" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16">
+  <title id="t">Branch, pull request, merge</title>
+  <desc id="d">Claude copies main into a branch and saves its changes there. It opens a pull request, where you read the changes. When you press Merge pull request, the branch joins main. Until then, main does not change.</desc>
+  <!-- Colours: ink = main and the words that matter; muted = the branch (a draft) and side notes; green = GitHub's merge colour, the one moment that matters.
+       Contrast, light on #faf6f0: ink 14.2:1, muted 5.8:1, green 4.7:1. Dark on #2a231e: ink 12.6:1, muted 6.9:1, green 6.1:1. -->
+  <style>
+    .bg { fill: #faf6f0; } .box { fill: #ffffff; } .ink { fill: #2b2420; } .mut { fill: #6b5e55; } .grn { fill: #1a7f37; }
+    .s-ink { stroke: #2b2420; } .s-mut { stroke: #6b5e55; } .s-on { stroke: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2a231e; } .box { fill: #262019; } .ink { fill: #efe7df; } .mut { fill: #b9aa9d; } .grn { fill: #3fb950; }
+      .s-ink { stroke: #efe7df; } .s-mut { stroke: #b9aa9d; } .s-on { stroke: #1f1a17; }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="400" height="418" rx="16"/>
+
+  <!-- 2: the pull request card, joined to the newest commit by a leader line -->
+  <rect class="box s-ink" x="132" y="24" width="236" height="64" rx="10" stroke-width="2"/>
+  <text class="ink" x="250" y="50" font-weight="700" text-anchor="middle">2 Pull request</text>
+  <text class="mut" x="250" y="74" text-anchor="middle">you read the changes</text>
+  <line class="s-mut" x1="250" y1="88" x2="250" y2="151" stroke-width="2"/>
+
+  <!-- 1: the branch, muted because it is a draft; the label sits inside its arch -->
+  <path class="s-mut" d="M44 300 C 44 200, 74 160, 114 160 L 286 160 C 326 160, 350 200, 350 300" fill="none" stroke-width="4"/>
+  <circle class="box s-mut" cx="150" cy="160" r="9" stroke-width="3"/>
+  <circle class="box s-mut" cx="200" cy="160" r="9" stroke-width="3"/>
+  <circle class="box s-mut" cx="250" cy="160" r="9" stroke-width="3"/>
+  <text class="ink" x="197" y="204" font-weight="700" text-anchor="middle">1 Claude works on a branch</text>
+  <text class="mut" x="197" y="226" text-anchor="middle">its own copy, saved</text>
+  <text class="mut" x="197" y="248" text-anchor="middle">in small steps</text>
+
+  <!-- main: the live version -->
+  <line class="s-ink" x1="24" y1="300" x2="376" y2="300" stroke-width="5" stroke-linecap="round"/>
+  <circle class="ink" cx="44" cy="300" r="9"/>
+  <text x="24" y="336"><tspan class="ink" font-weight="700">main</tspan><tspan class="mut"> the live version</tspan></text>
+
+  <!-- 3: merge -->
+  <circle class="grn" cx="350" cy="300" r="16"/>
+  <path class="s-on" d="M342 300 l6 6 l11 -12" fill="none" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="grn" x="326" y="286" font-weight="700" text-anchor="end">3 Merge</text>
+
+  <!-- Footer: the one idea to keep -->
+  <text class="ink" x="24" y="372">Your tap on Merge pull request</text>
+  <text class="ink" x="24" y="394">is the only way into main</text>
+</svg>
