@@ -137,6 +137,17 @@ pre code { background: none; border: 0; padding: 0; font-size: 0.9em; }
 .button { display: inline-block; padding: 10px 16px; background: var(--accent); color: #fff; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
 .button:hover { opacity: 0.92; }
 
+/* Home first screen: one main button, one plain link (standards.md, Lists and choices) */
+.intro-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 20px; }
+.intro-links .button { min-height: 44px; display: inline-flex; align-items: center; }
+
+/* "My mistake" box: one real mistake per chapter and the rule it led to.
+   Same cream box as "In short", but a grey edge, so the accent edge stays unique to "In short". */
+.mistake { margin: 32px 0; padding: 16px 20px; background: var(--bg-soft); border: 1px solid var(--line); border-left: 3px solid var(--muted); border-radius: var(--radius); }
+.mistake h2 { font-family: inherit; margin: 0 0 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.mistake p { margin: 0; }
+.mistake p + p { margin-top: 0.75em; }
+
 code { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 5px; padding: 0.1em 0.35em; font-size: 0.9em; }
 
 /* Footer */

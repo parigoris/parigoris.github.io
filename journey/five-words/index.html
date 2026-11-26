@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The 5 words: model, harness, session, repository and GitHub · Leonidas Parigoris</title>
+  <meta name="description" content="Claude Code clicked for me once I knew five words. Here they are in plain language, with a horse to help them stick.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="/">Leonidas Parigoris</a>
+    <nav class="site-nav">
+      <a href="/journey/" class="active">The journey</a>
+      <a href="/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+  <div class="container with-sidebar">
+    
+<aside class="toc toc-desktop" aria-label="The journey">
+  <p class="toc-heading"><a href="/journey/">The journey</a></p>
+  
+<ol class="toc-list">
+  
+  
+  
+  
+  <li><a href="/journey/five-words/" class="active" aria-current="page"><span class="toc-num">1</span>The 5 words</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>How they connect</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
+  
+  
+  
+  
+  
+  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  
+  
+  
+  
+  
+  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  
+  
+</ol>
+
+</aside>
+<details class="toc toc-mobile">
+  <summary>The journey</summary>
+  
+<ol class="toc-list">
+  
+  
+  
+  
+  <li><a href="/journey/five-words/" class="active" aria-current="page"><span class="toc-num">1</span>The 5 words</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>How they connect</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
+  
+  
+  
+  
+  
+  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  
+  
+  
+  
+  
+  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  
+  
+</ol>
+
+</details>
+
+    <main class="content">
+      <article class="chapter">
+  <p class="back"><a href="/journey/">← The journey</a></p>
+  
+
+
+
+
+  
+  <p class="chapter-label">Chapter 1 · The 5 words</p>
+  <h1>The 5 words: model, harness, session, repository and GitHub</h1>
+  <p class="meta">26 November 2026</p>
+  <p class="summary">Claude Code clicked for me once I knew five words. Here they are in plain language, with a horse to help them stick.</p>
+
+  
+  <aside class="in-short" aria-label="In short">
+    <h2>In short</h2>
+    <ul>
+      <li><strong>What:</strong> the five words you need before Claude Code makes sense: model, harness, session, repository and GitHub.</li>
+      <li><strong>Big idea:</strong> the model thinks, the harness lets it act, and the repository remembers what each session forgets.</li>
+      <li><strong>No code needed:</strong> I do most of this from my phone, so if I can follow it, you can too.</li>
+      
+    </ul>
+  </aside>
+  
+
+  
+
+  
+
+  <h2 id="start-here">Start here</h2>
+
+<p>When I first opened Claude Code, words like “harness” and “repo” came at me fast, as if everyone already knew them. It turns out you only need five, and once they’re in place, everything else gets much easier to follow. You don’t need to know how to code.</p>
+
+<p><em>An unofficial guide, not made by or affiliated with Anthropic.</em></p>
+
+<h2 id="1-the-model-the-horse">1. The model: the horse</h2>
+
+<p>The <strong>model</strong> is the AI brain. It reads your message, thinks, and writes an answer. In Claude Code, the model is Claude.</p>
+
+<p>Picture a strong, clever horse. It can do a lot, but on its own it can’t open a file or run a command. It also has no memory between conversations, and it can be wrong, so you still check its work.</p>
+
+<h2 id="2-the-harness-the-gear-that-gives-the-horse-hands">2. The harness: the gear that gives the horse hands</h2>
+
+<p>The <strong>harness</strong> is the program around the model that lets it do real things. Claude Code is the harness. It gives the model tools: reading and writing files, running commands, searching a folder.</p>
+
+<p>The harness also decides what the model is <em>allowed</em> to do, and that’s where safety lives. I have a small <strong>guard hook</strong> in my setup: a piece of code the harness runs before risky actions, which blocks them. The model can’t talk its way past it, because it’s code, not a request.</p>
+
+<h2 id="3-the-session-one-ride">3. The session: one ride</h2>
+
+<p>A <strong>session</strong> is one conversation with Claude Code. In the cloud version, each session also gets its own temporary computer to work on.</p>
+
+<p>When a session ends, the model forgets it. The next one starts fresh, with no memory of what you said before.</p>
+
+<h2 id="4-the-repository-a-folder-that-remembers">4. The repository: a folder that remembers</h2>
+
+<p>A <strong>repository</strong> (or “repo”) is a folder of files that keeps its full history. Every saved change is kept, so you can see what changed and go back.</p>
+
+<p>This is how you fix the forgetting. Put your rules and notes in a repository, and every new session reads them at the start. I keep a private one for my rules, plans and notes, so Claude behaves the same way every time.</p>
+
+<h2 id="5-github-where-repositories-live">5. GitHub: where repositories live</h2>
+
+<p><strong>GitHub</strong> is a website that stores repositories online. It keeps them safe, keeps their history, and lets you look at every change before you accept it. Claude Code on the web opens a repository from GitHub at the start of a session, then saves its work back there.</p>
+
+<h2 id="how-the-5-words-fit-together">How the 5 words fit together</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code> YOU  (phone or laptop)
+   │  type a message
+   ▼
+ SESSION  ← one conversation, then it forgets
+   ├─ MODEL    Claude       ← the horse: the brain
+   ├─ HARNESS  Claude Code  ← the gear: tools, files, commands
+   │    └─ GUARD HOOK       ← blocks risky actions
+   └─ opens a REPOSITORY    ← the folder that remembers
+                 │
+                 ▼
+             GITHUB         ← where repositories live
+</code></pre></div></div>
+
+<p>You talk to a session. Inside it, the model thinks and the harness acts. The session opens a repository that lives on GitHub, so your work survives after the session is gone.</p>
+
+<aside class="mistake" aria-label="My mistake">
+  <h2>My mistake</h2>
+  <p>In my first sessions, I’d start a new chat and carry on as if Claude remembered yesterday. It didn’t, so I found myself explaining the same things again and again.</p>
+  <p class="mistake-rule"><strong>The rule it gave me:</strong> If something matters, save it in a file in the repository before the session ends.</p>
+</aside>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>Open Claude Code, start a session, and ask:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>In one sentence each, what are the model, the harness and the repository in this session?
+</code></pre></div></div>
+
+<p>Then start a new session and ask what you talked about last time. It won’t know. That moment is the whole reason the repository matters.</p>
+
+
+  
+  
+  <nav class="chapter-nav" aria-label="Chapter navigation">
+    
+    
+      
+      
+      <a class="next" href="/journey/token-basics/"><span>Chapter 2 →</span>How they connect</a>
+      
+    
+  </nav>
+  
+</article>
+
+    </main>
+  </div>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Leonidas Parigoris</span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197" rel="me">LinkedIn</a>
+      <a href="https://github.com/parigoris" rel="me">GitHub</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
