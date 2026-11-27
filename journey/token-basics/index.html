@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Why a one-line “thanks” got expensive · Leonidas Parigoris</title>
-  <meta name="description" content="I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.">
+  <title>Why long AI chats get slow, and the habit that fixes it · Leonidas Parigoris</title>
+  <meta name="description" content="I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.">
   <link rel="canonical" href="https://parigoris.github.io/journey/token-basics/">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <!-- Social preview (LinkedIn and other link previews) -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Leonidas Parigoris">
-  <meta property="og:title" content="Why a one-line “thanks” got expensive · Leonidas Parigoris">
-  <meta property="og:description" content="I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.">
+  <meta property="og:title" content="Why long AI chats get slow, and the habit that fixes it · Leonidas Parigoris">
+  <meta property="og:description" content="I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.">
   <meta property="og:url" content="https://parigoris.github.io/journey/token-basics/">
   <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
   <meta property="og:image:width" content="1200">
@@ -128,8 +128,8 @@
     <li class="done"><span>1</span><small>Set up</small></li><li class="here" aria-current="step"><span>2</span><small>Tokens and cost</small></li><li class=""><span>3</span><small>Working safely</small></li><li class=""><span>4</span><small>Memory</small></li><li class=""><span>5</span><small>Automation</small></li>
   </ol>
   <p class="chapter-label">Chapter 2 · Tokens and cost</p>
-  <h1>Why a one-line “thanks” got expensive</h1>
-  <p class="summary">I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.</p>
+  <h1>Why long AI chats get slow, and the habit that fixes it</h1>
+  <p class="summary">I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.</p>
   
   <p class="meta">24 November 2026 · 6 min read</p>
 
@@ -149,20 +149,20 @@
 
   
 
-  <p class="lede">It was the evening of 24 November, and I was still in the same Claude Code chat I’d opened that morning.</p>
+  <p class="lede">On 24 November I built most of this website in one Claude Code chat, from morning to evening.</p>
 
-<p>In that one conversation we had picked the colours for this site, rewritten the home page, researched line spacing, started a build log and parked a pile of new ideas. Everything worked. Then I typed four words, <em>looks good, thanks</em>, and watched the agent think about them for far too long.</p>
+<p>Colours, the home page, research on line spacing, a build log, a pile of new ideas: all in the same conversation. It worked well. By the evening my job was mostly to check the result and confirm it looked good, which is about as easy as work gets. Even those quick confirmations started to take ages.</p>
 
-<p>Nothing was broken. The agent was re-reading my entire day, and every re-read came out of my plan’s usage limit.</p>
+<p>Nothing was broken. Every reply was dragging my whole day along with it, and every re-read came out of my plan’s usage limit.</p>
 
-<h2 id="what-thanks-actually-costs">What “thanks” actually costs</h2>
+<h2 id="what-a-message-actually-costs">What a message actually costs</h2>
 
 <dl class="equals">
   <div><dt>Token</dt><dd><strong>= a small chunk of text, often part of a word</strong><span>AI models read and write in tokens, and that is what your usage counts.</span></dd></div>
 </dl>
 
-<div class="tokens" role="img" aria-label="The phrase ‘looks good, thanks’ cut into five chunks: looks, good, comma, thanks, full stop.">
-  <span>looks</span><span>␣good</span><span>,</span><span>␣thanks</span><span>.</span>
+<div class="tokens" role="img" aria-label="The phrase ‘Looks good to me.’ cut into five chunks: Looks, good, to, me, full stop.">
+  <span>Looks</span><span>␣good</span><span>␣to</span><span>␣me</span><span>.</span>
 </div>
 <p class="figure-note">Roughly how a short phrase gets cut up (␣ marks a space). The exact split depends on the model.</p>
 
@@ -172,7 +172,7 @@
 
 <h2 id="every-message-carries-the-whole-chat">Every message carries the whole chat</h2>
 
-<p>The model has no memory between messages. So each time I pressed send, Claude Code sent it the <strong>entire conversation</strong> again: every earlier message, every file it had opened, every result it got back. My four words were riding on top of a whole day.</p>
+<p>The model has no memory between messages. So each time I pressed send, Claude Code sent it the <strong>entire conversation</strong> again: every earlier message, every file it had opened, every result it got back. So even a one-line confirmation carried the whole day with it.</p>
 
 <p>Recent text is cached, so re-reading it is charged at a lower rate than new text. A lower rate still adds up when the pile is a day long.</p>
 
@@ -246,8 +246,8 @@
     <p>Ask the AI to save any website decisions to a file, then start a fresh chat for the email. The email chat won’t carry two hours of website talk.</p>
   </details>
   <details>
-    <summary>Why does “thanks” cost more at the end of a long chat than at the start of a new one?</summary>
-    <p>Because it gets sent together with everything before it. The four words are cheap, but the day of conversation underneath them isn’t.</p>
+    <summary>Why does a short reply cost more at the end of a long chat than at the start of a new one?</summary>
+    <p>Because it gets sent together with everything before it. The reply is small, but the chat underneath it isn’t.</p>
   </details>
   <details>
     <summary>You hand a big search to a subagent. Is it free?</summary>
