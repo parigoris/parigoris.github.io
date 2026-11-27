@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 780" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif">
+  <title id="t">Three safety layers, and what each one cannot stop</title>
+  <desc id="d">Layer 1, the rules: a sign on the door. Stops an agent that reads and obeys them. Cannot force anything. Layer 2, the guard hook: checks every command before it runs. Stops pushes to main, force pushes and merges. Cannot see inside a script written first and run later, and does nothing if it is not loaded. Layer 3, the GitHub ruleset: the wall on GitHub's side. Stops any change to main without a pull request, from anyone, me included. Cannot protect a private repository on GitHub's free plan. What gets past one layer falls to the next.</desc>
+  <!-- Colours: ink = what each layer is and stops; muted = the one-line metaphor and arrows; accent = "Can’t", the limit, the one thing that matters; edge = card outlines.
+       Contrast, light on #ffffff: ink 15.3:1, muted 6.3:1, accent 5.0:1. Dark on #262019: ink 13.2:1, muted 7.1:1, accent 6.5:1. -->
+  <style>
+    .bg { fill: #faf6f0; } .box { fill: #ffffff; } .ink { fill: #2b2420; } .mut { fill: #6b5e55; } .acc { fill: #b4532a; } .sand { fill: #d9cfc4; }
+    .s-ink { stroke: #2b2420; } .s-mut { stroke: #6b5e55; } .s-acc { stroke: #b4532a; } .s-edge { stroke: #d9cfc4; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2a231e; } .box { fill: #262019; } .ink { fill: #efe7df; } .mut { fill: #b9aa9d; } .acc { fill: #e3906a; } .sand { fill: #4d433b; }
+      .s-ink { stroke: #efe7df; } .s-mut { stroke: #b9aa9d; } .s-acc { stroke: #e3906a; } .s-edge { stroke: #4d433b; }
+    }
+  </style>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path class="mut" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="560" height="780" rx="18"/>
+
+  <!-- Layer 1 -->
+  <rect class="box s-edge" x="20" y="20" width="520" height="200" rx="14" stroke-width="2"/>
+  <text class="ink" x="44" y="62" font-size="26" font-weight="700">1 · The rules</text>
+  <text class="mut" x="44" y="92" font-size="23">A sign on the door</text>
+  <text class="ink" x="44" y="134" font-size="23" font-weight="700">Stops</text>
+  <text class="ink" x="124" y="134" font-size="23">an agent that reads and obeys</text>
+  <text class="acc" x="44" y="176" font-size="23" font-weight="700">Can’t</text>
+  <text class="ink" x="124" y="176" font-size="23">force anything. The agent</text>
+  <text class="ink" x="124" y="204" font-size="23">can misread or skip a rule</text>
+
+  <line class="s-mut" x1="280" y1="224" x2="280" y2="254" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- Layer 2 -->
+  <rect class="box s-edge" x="20" y="262" width="520" height="228" rx="14" stroke-width="2"/>
+  <text class="ink" x="44" y="304" font-size="26" font-weight="700">2 · The guard hook</text>
+  <text class="mut" x="44" y="334" font-size="23">Checks every command first</text>
+  <text class="ink" x="44" y="376" font-size="23" font-weight="700">Stops</text>
+  <text class="ink" x="124" y="376" font-size="23">pushes to main, force</text>
+  <text class="ink" x="124" y="404" font-size="23">pushes, merges</text>
+  <text class="acc" x="44" y="446" font-size="23" font-weight="700">Can’t</text>
+  <text class="ink" x="124" y="446" font-size="23">see inside a saved script,</text>
+  <text class="ink" x="124" y="474" font-size="23">or work if it isn’t loaded</text>
+
+  <line class="s-mut" x1="280" y1="494" x2="280" y2="524" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- Layer 3 -->
+  <rect class="box s-edge" x="20" y="532" width="520" height="228" rx="14" stroke-width="2"/>
+  <text class="ink" x="44" y="574" font-size="26" font-weight="700">3 · The GitHub ruleset</text>
+  <text class="mut" x="44" y="604" font-size="23">The wall, on GitHub’s side</text>
+  <text class="ink" x="44" y="646" font-size="23" font-weight="700">Stops</text>
+  <text class="ink" x="124" y="646" font-size="23">any change to main without</text>
+  <text class="ink" x="124" y="674" font-size="23">a pull request, even mine</text>
+  <text class="acc" x="44" y="716" font-size="23" font-weight="700">Can’t</text>
+  <text class="ink" x="124" y="716" font-size="23">protect a private repository</text>
+  <text class="ink" x="124" y="744" font-size="23">on GitHub’s free plan</text>
+</svg>

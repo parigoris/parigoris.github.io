@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 490" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif">
+  <title id="t">97 attack commands against my guard, before and after the rebuild</title>
+  <desc id="d">Two bars of 97 attack commands each. Before the rebuild, 76 got through and 21 were blocked. After the rebuild to fail closed, 94 were blocked and 3 were left, all harmless commands.</desc>
+  <!-- Colours: accent = got through (the danger, the one thing that matters); sand = blocked (quiet on purpose); muted = axis and notes.
+       Text contrast, light: ink on #faf6f0 14.6:1, ink on sand 9.9:1, white on accent 5.0:1, accent on #faf6f0 4.6:1, muted 5.8:1.
+       Dark: ink on #2a231e 12.6:1, ink on sand 7.9:1, dark text on accent 7.0:1, accent 6.2:1, muted 6.9:1. -->
+  <style>
+    .bg { fill: #faf6f0; } .ink { fill: #2b2420; } .mut { fill: #6b5e55; } .acc { fill: #b4532a; } .sand { fill: #d9cfc4; } .on-acc { fill: #ffffff; }
+    .s-mut { stroke: #6b5e55; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2a231e; } .ink { fill: #efe7df; } .mut { fill: #b9aa9d; } .acc { fill: #e3906a; } .sand { fill: #4d433b; } .on-acc { fill: #1f1a17; }
+      .s-mut { stroke: #b9aa9d; }
+    }
+  </style>
+  <rect class="bg" width="560" height="490" rx="18"/>
+
+  <!-- Title -->
+  <text class="ink" x="30" y="50" font-size="27" font-weight="700">97 attacks on my guard</text>
+  <text class="mut" x="30" y="82" font-size="23">Fed to a copy of the guard, never run</text>
+
+  <!-- Legend -->
+  <rect class="acc" x="30" y="102" width="20" height="20" rx="4"/>
+  <text class="ink" x="58" y="119" font-size="23">got through</text>
+  <rect class="sand" x="210" y="102" width="20" height="20" rx="4"/>
+  <text class="ink" x="238" y="119" font-size="23">blocked</text>
+
+  <!-- Scale: 5 units = 1 command, so 0 is at x=30 and 100 at x=530 -->
+  <!-- Marker at 97: every command was tested, so both bars end here -->
+  <line class="s-mut" x1="515" y1="178" x2="515" y2="412" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text class="mut" x="515" y="170" font-size="23" font-weight="700" text-anchor="middle">97</text>
+
+  <!-- Before: 76 through, 21 blocked -->
+  <text class="ink" x="30" y="170" font-size="24" font-weight="700">Before the rebuild</text>
+  <rect class="acc" x="30" y="184" width="380" height="56"/>
+  <rect class="sand" x="410" y="184" width="105" height="56"/>
+  <text class="on-acc" x="46" y="221" font-size="24" font-weight="700">76 got through</text>
+  <text class="ink" x="462.5" y="221" font-size="24" font-weight="700" text-anchor="middle">21</text>
+
+  <!-- After: 3 left, 94 blocked -->
+  <text class="ink" x="30" y="290" font-size="24" font-weight="700">After: fail closed</text>
+  <rect class="acc" x="30" y="304" width="15" height="56"/>
+  <rect class="sand" x="45" y="304" width="470" height="56"/>
+  <text class="ink" x="62" y="341" font-size="24" font-weight="700">94 blocked</text>
+  <text class="acc" x="30" y="388" font-size="23">↑ 3 left, all harmless commands</text>
+
+  <!-- Axis: 0, 25, 50, 75, 100 -->
+  <line class="s-mut" x1="30" y1="404" x2="530" y2="404" stroke-width="1.5"/>
+  <g class="s-mut" stroke-width="1.5">
+    <line x1="30" y1="404" x2="30" y2="412"/>
+    <line x1="155" y1="404" x2="155" y2="412"/>
+    <line x1="280" y1="404" x2="280" y2="412"/>
+    <line x1="405" y1="404" x2="405" y2="412"/>
+    <line x1="530" y1="404" x2="530" y2="412"/>
+  </g>
+  <g class="mut" font-size="23" text-anchor="middle">
+    <text x="36" y="438">0</text>
+    <text x="155" y="438">25</text>
+    <text x="280" y="438">50</text>
+    <text x="405" y="438">75</text>
+    <text x="524" y="438">100</text>
+  </g>
+  <text class="mut" x="280" y="468" font-size="23" text-anchor="middle">Attack commands</text>
+</svg>

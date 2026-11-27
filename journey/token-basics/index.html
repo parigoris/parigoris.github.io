@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Token basics: why long AI chats cost more, and 7 tricks to spend less · Leonidas Parigoris</title>
-  <meta name="description" content="I spent a whole day building this website in one long chat with an AI agent. It worked, but it got expensive. Here&#39;s what I learned about tokens, in plain words.">
+  <title>Why a one-line “thanks” got expensive · Leonidas Parigoris</title>
+  <meta name="description" content="I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.">
   <link rel="canonical" href="https://parigoris.github.io/journey/token-basics/">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <!-- Social preview (LinkedIn and other link previews) -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Leonidas Parigoris">
-  <meta property="og:title" content="Token basics: why long AI chats cost more, and 7 tricks to spend less · Leonidas Parigoris">
-  <meta property="og:description" content="I spent a whole day building this website in one long chat with an AI agent. It worked, but it got expensive. Here&#39;s what I learned about tokens, in plain words.">
+  <meta property="og:title" content="Why a one-line “thanks” got expensive · Leonidas Parigoris">
+  <meta property="og:description" content="I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.">
   <meta property="og:url" content="https://parigoris.github.io/journey/token-basics/">
   <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
   <meta property="og:image:width" content="1200">
@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
   <div class="container header-inner">
     <a class="site-name" href="/">Leonidas Parigoris</a>
@@ -32,6 +33,8 @@
   </div>
 </header>
 
+  
+  
   <div class="container with-sidebar">
     
 <aside class="toc toc-desktop" aria-label="The journey">
@@ -42,7 +45,7 @@
   
   
   
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
   
   
   
@@ -81,7 +84,7 @@
   
   
   
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
   
   
   
@@ -113,27 +116,30 @@
 </details>
 
 
-    <main class="content">
+    <main class="content" id="main" tabindex="-1">
       <article class="chapter">
-  <p class="back"><a href="/journey/">← The journey</a></p>
   
 
 
 
 
   
+  <ol class="progress" aria-label="Where this chapter sits in the journey">
+    <li class="done"><span>1</span><small>Set up</small></li><li class="here" aria-current="step"><span>2</span><small>Tokens and cost</small></li><li class=""><span>3</span><small>Working safely</small></li><li class=""><span>4</span><small>Memory</small></li><li class=""><span>5</span><small>Automation</small></li>
+  </ol>
   <p class="chapter-label">Chapter 2 · Tokens and cost</p>
-  <h1>Token basics: why long AI chats cost more, and 7 tricks to spend less</h1>
-  <p class="meta">24 November 2026</p>
-  <p class="summary">I spent a whole day building this website in one long chat with an AI agent. It worked, but it got expensive. Here's what I learned about tokens, in plain words.</p>
+  <h1>Why a one-line “thanks” got expensive</h1>
+  <p class="summary">I built this website in one long chat with an AI agent. By the evening, even “looks good, thanks” was slow. Here’s what was going on, and what I changed because of it.</p>
+  
+  <p class="meta">24 November 2026 · 6 min read</p>
 
   
   <aside class="in-short" aria-label="In short">
-    <h2>In short</h2>
+    <h2>The 30-second version</h2>
     <ul>
-      <li><strong>What:</strong> a beginner’s guide to tokens, the small pieces of text that AI tools count and charge for.</li>
-      <li><strong>Why it matters:</strong> every new message makes the AI re-read the whole chat, so long chats about many topics get pricey.</li>
-      <li><strong>Biggest win:</strong> one chat per task. Starting fresh is free, and the answers often get better.</li>
+      <li>AI tools count text in <strong>tokens</strong>, chunks of a few letters, and every token the AI reads or writes counts against your plan’s usage limit.</li>
+      <li>Each new message makes the AI <strong>re-read the whole chat</strong>, so the cost grows with the chat, not with your message.</li>
+      <li>The biggest win is free: <strong>one chat per task</strong>, with the important bits saved to a file in between.</li>
       
     </ul>
   </aside>
@@ -143,95 +149,137 @@
 
   
 
-  <h2 id="what-i-learned-the-hard-way">What I learned the hard way</h2>
+  <p class="lede">It was the evening of 24 November, and I was still in the same Claude Code chat I’d opened that morning.</p>
 
-<p>I built most of this website in one very long session with Claude Code. We did the design, the colours, the research, a build log and a pile of new ideas, all in the same chat. Everything worked. But by the end, every small question I asked was slow and costly, even a one-line “looks good, thanks”.</p>
+<p>In that one conversation we had picked the colours for this site, rewritten the home page, researched line spacing, started a build log and parked a pile of new ideas. Everything worked. Then I typed four words, <em>looks good, thanks</em>, and watched the agent think about them for far too long.</p>
 
-<p>The reason turned out to be simple, and once I saw it, I changed how I work.</p>
+<p>Nothing was broken. The agent was re-reading my entire day, and every re-read came out of my plan’s usage limit.</p>
 
-<h2 id="what-is-a-token">What is a token?</h2>
+<h2 id="what-thanks-actually-costs">What “thanks” actually costs</h2>
 
-<p>AI models don’t read words the way we do. They cut text into small chunks called <strong>tokens</strong>. A token is often a piece of a word, a few letters long. For Claude, Anthropic says a token is roughly 3.5 English characters on earlier models, and newer models cut the same text into a bit more tokens. Other languages and code can split differently.</p>
+<p>AI models cut text into small chunks called <strong>tokens</strong>, and a token is often just a piece of a word.</p>
 
-<p>You pay for tokens (or use up your plan’s limit with them) in two directions: what the AI reads, and what it writes.</p>
+<div class="tokens" role="img" aria-label="The phrase ‘looks good, thanks’ cut into five chunks: looks, good, comma, thanks, full stop.">
+  <span>looks</span><span>␣good</span><span>,</span><span>␣thanks</span><span>.</span>
+</div>
+<p class="figure-note">Roughly how a short phrase gets cut up (␣ marks a space). The exact split depends on the model.</p>
 
-<h2 id="why-long-chats-cost-more">Why long chats cost more</h2>
+<p>Anthropic puts a Claude token at about 3.5 English characters on earlier models. Claude 4.7 and later cut the same text finer, into about 30% more tokens, so the same chat uses more of your limit on a newer model. Tokens count in both directions, for what the AI reads and for what it writes.</p>
 
-<p>Here’s the part that surprised me. The AI has no memory between messages. So each time you send one, the tool sends the <strong>whole conversation</strong> again: every earlier message, every file it read, every result it got back.</p>
+<p>None of this costs me money, because I keep <strong>usage credits</strong> (once called extra usage, in Settings &gt; Usage) switched off. With them off, work stops when I reach my plan’s usage limit and waits until the limit resets. Every token moves me closer to that ceiling instead of adding to a bill.</p>
 
-<p>That means:</p>
+<h2 id="every-message-carries-the-whole-chat">Every message carries the whole chat</h2>
 
-<ul>
-  <li>A short question at the end of a long chat still pays for everything before it.</li>
-  <li>A chat that wandered across three unrelated topics re-reads all three on every turn.</li>
-  <li>Tools help a little: recently read text is cached and gets cheaper. But the cache expires after a while, and then the full history is processed again.</li>
-</ul>
+<p>The model has no memory between messages. So each time I pressed send, Claude Code sent it the <strong>entire conversation</strong> again: every earlier message, every file it had opened, every result it got back. My four words were riding on top of a whole day.</p>
 
-<p>So the cost of a message isn’t about how long <em>your</em> message is. It’s about how long the <em>whole chat</em> is.</p>
+<p>Recent text is cached, so re-reading it is charged at a lower rate than new text. A lower rate still adds up when the pile is a day long.</p>
 
-<h2 id="7-tricks-to-spend-fewer-tokens">7 tricks to spend fewer tokens</h2>
+<figure class="pile" data-context-pile="">
+  <figcaption class="pile-head">
+    <strong>Every message re-reads the chat so far</strong>
+    Two people send the same 12 messages about 3 tasks. Each block is one message and its reply. Each bar shows how many blocks the AI re-reads to answer that message.
+  </figcaption>
+  <ul class="pile-legend" aria-label="Legend">
+    <li><i class="key current" aria-hidden="true"></i>Messages from the task you’re working on</li>
+    <li><i class="key waste" aria-hidden="true"></i>Messages from finished tasks, re-read for nothing</li>
+  </ul>
+  <div class="pile-grid">
+    <div class="pile-card" data-pile-mode="long">
+      <p class="pile-title">One long chat for all 3 tasks</p>
+      <p class="pile-yaxis" aria-hidden="true">Blocks re-read</p>
+      <div class="pile-chart"><svg viewBox="0 0 392 270" class="pile-svg" role="img" aria-label="One long chat: after 12 messages, 78 blocks re-read, 48 from finished tasks."><line class="pile-base" x1="30" y1="218.5" x2="384" y2="218.5" /><text class="pile-tick" x="24" y="223.5" text-anchor="end">0</text><line class="pile-grid-line" x1="30" y1="164.5" x2="384" y2="164.5" /><text class="pile-tick" x="24" y="169.5" text-anchor="end">4</text><line class="pile-grid-line" x1="30" y1="108.5" x2="384" y2="108.5" /><text class="pile-tick" x="24" y="113.5" text-anchor="end">8</text><line class="pile-grid-line" x1="30" y1="52.5" x2="384" y2="52.5" /><text class="pile-tick" x="24" y="57.5" text-anchor="end">12</text><text class="pile-band" x="32" y="16">Task 1</text><line class="pile-divider" x1="146" y1="4" x2="146" y2="218" /><text class="pile-band" x="152" y="16">Task 2</text><text class="pile-band-sub" x="152" y="34">same chat</text><line class="pile-divider" x1="266" y1="4" x2="266" y2="218" /><text class="pile-band" x="272" y="16">Task 3</text><text class="pile-band-sub" x="272" y="34">same chat</text><g class="pile-bar"><title>Message 1: re-reads 1 blocks</title><rect class="pile-blk current" x="30" y="206" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 2: re-reads 2 blocks</title><rect class="pile-blk current" x="60" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="60" y="192" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 3: re-reads 3 blocks</title><rect class="pile-blk current" x="90" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="90" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="90" y="178" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 4: re-reads 4 blocks</title><rect class="pile-blk current" x="120" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="178" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="164" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 5: re-reads 5 blocks, 4 of them from finished tasks</title><rect class="pile-blk waste" x="150" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="150" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="150" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="150" y="164" width="22" height="12" rx="2" /><rect class="pile-blk current" x="150" y="150" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 6: re-reads 6 blocks, 4 of them from finished tasks</title><rect class="pile-blk waste" x="180" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="180" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="180" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="180" y="164" width="22" height="12" rx="2" /><rect class="pile-blk current" x="180" y="150" width="22" height="12" rx="2" /><rect class="pile-blk current" x="180" y="136" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 7: re-reads 7 blocks, 4 of them from finished tasks</title><rect class="pile-blk waste" x="210" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="210" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="210" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="210" y="164" width="22" height="12" rx="2" /><rect class="pile-blk current" x="210" y="150" width="22" height="12" rx="2" /><rect class="pile-blk current" x="210" y="136" width="22" height="12" rx="2" /><rect class="pile-blk current" x="210" y="122" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 8: re-reads 8 blocks, 4 of them from finished tasks</title><rect class="pile-blk waste" x="240" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="240" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="240" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="240" y="164" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="150" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="136" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="122" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="108" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 9: re-reads 9 blocks, 8 of them from finished tasks</title><rect class="pile-blk waste" x="270" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="164" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="150" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="136" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="122" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="270" y="108" width="22" height="12" rx="2" /><rect class="pile-blk current" x="270" y="94" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 10: re-reads 10 blocks, 8 of them from finished tasks</title><rect class="pile-blk waste" x="300" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="164" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="150" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="136" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="122" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="300" y="108" width="22" height="12" rx="2" /><rect class="pile-blk current" x="300" y="94" width="22" height="12" rx="2" /><rect class="pile-blk current" x="300" y="80" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 11: re-reads 11 blocks, 8 of them from finished tasks</title><rect class="pile-blk waste" x="330" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="164" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="150" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="136" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="122" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="330" y="108" width="22" height="12" rx="2" /><rect class="pile-blk current" x="330" y="94" width="22" height="12" rx="2" /><rect class="pile-blk current" x="330" y="80" width="22" height="12" rx="2" /><rect class="pile-blk current" x="330" y="66" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 12: re-reads 12 blocks, 8 of them from finished tasks</title><rect class="pile-blk waste" x="360" y="206" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="192" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="178" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="164" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="150" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="136" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="122" width="22" height="12" rx="2" /><rect class="pile-blk waste" x="360" y="108" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="94" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="80" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="66" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="52" width="22" height="12" rx="2" /></g><text class="pile-tick" x="41" y="238" text-anchor="middle">1</text><text class="pile-tick" x="71" y="238" text-anchor="middle">2</text><text class="pile-tick" x="101" y="238" text-anchor="middle">3</text><text class="pile-tick" x="131" y="238" text-anchor="middle">4</text><text class="pile-tick" x="161" y="238" text-anchor="middle">5</text><text class="pile-tick" x="191" y="238" text-anchor="middle">6</text><text class="pile-tick" x="221" y="238" text-anchor="middle">7</text><text class="pile-tick" x="251" y="238" text-anchor="middle">8</text><text class="pile-tick" x="281" y="238" text-anchor="middle">9</text><text class="pile-tick" x="311" y="238" text-anchor="middle">10</text><text class="pile-tick" x="341" y="238" text-anchor="middle">11</text><text class="pile-tick" x="371" y="238" text-anchor="middle">12</text><text class="pile-axis" x="206" y="262" text-anchor="middle">Message number</text></svg></div>
+      <p class="pile-total"><span data-pile-total="">78</span> blocks re-read, <b data-pile-waste="">48</b> of them for nothing</p>
+    </div>
+    <div class="pile-card" data-pile-mode="fresh">
+      <p class="pile-title">A fresh chat for each task</p>
+      <p class="pile-yaxis" aria-hidden="true">Blocks re-read</p>
+      <div class="pile-chart"><svg viewBox="0 0 392 270" class="pile-svg" role="img" aria-label="A fresh chat per task: after 12 messages, 30 blocks re-read, 0 from finished tasks."><line class="pile-base" x1="30" y1="218.5" x2="384" y2="218.5" /><text class="pile-tick" x="24" y="223.5" text-anchor="end">0</text><line class="pile-grid-line" x1="30" y1="164.5" x2="384" y2="164.5" /><text class="pile-tick" x="24" y="169.5" text-anchor="end">4</text><line class="pile-grid-line" x1="30" y1="108.5" x2="384" y2="108.5" /><text class="pile-tick" x="24" y="113.5" text-anchor="end">8</text><line class="pile-grid-line" x1="30" y1="52.5" x2="384" y2="52.5" /><text class="pile-tick" x="24" y="57.5" text-anchor="end">12</text><text class="pile-band" x="32" y="16">Task 1</text><line class="pile-divider fresh" x1="146" y1="4" x2="146" y2="218" /><text class="pile-band" x="152" y="16">Task 2</text><text class="pile-band-sub" x="152" y="34">new chat</text><line class="pile-divider fresh" x1="266" y1="4" x2="266" y2="218" /><text class="pile-band" x="272" y="16">Task 3</text><text class="pile-band-sub" x="272" y="34">new chat</text><g class="pile-bar"><title>Message 1: re-reads 1 blocks</title><rect class="pile-blk current" x="30" y="206" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 2: re-reads 2 blocks</title><rect class="pile-blk current" x="60" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="60" y="192" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 3: re-reads 3 blocks</title><rect class="pile-blk current" x="90" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="90" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="90" y="178" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 4: re-reads 4 blocks</title><rect class="pile-blk current" x="120" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="178" width="22" height="12" rx="2" /><rect class="pile-blk current" x="120" y="164" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 5: re-reads 1 blocks</title><rect class="pile-blk current" x="150" y="206" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 6: re-reads 2 blocks</title><rect class="pile-blk current" x="180" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="180" y="192" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 7: re-reads 3 blocks</title><rect class="pile-blk current" x="210" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="210" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="210" y="178" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 8: re-reads 4 blocks</title><rect class="pile-blk current" x="240" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="178" width="22" height="12" rx="2" /><rect class="pile-blk current" x="240" y="164" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 9: re-reads 1 blocks</title><rect class="pile-blk current" x="270" y="206" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 10: re-reads 2 blocks</title><rect class="pile-blk current" x="300" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="300" y="192" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 11: re-reads 3 blocks</title><rect class="pile-blk current" x="330" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="330" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="330" y="178" width="22" height="12" rx="2" /></g><g class="pile-bar"><title>Message 12: re-reads 4 blocks</title><rect class="pile-blk current" x="360" y="206" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="192" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="178" width="22" height="12" rx="2" /><rect class="pile-blk current" x="360" y="164" width="22" height="12" rx="2" /></g><text class="pile-tick" x="41" y="238" text-anchor="middle">1</text><text class="pile-tick" x="71" y="238" text-anchor="middle">2</text><text class="pile-tick" x="101" y="238" text-anchor="middle">3</text><text class="pile-tick" x="131" y="238" text-anchor="middle">4</text><text class="pile-tick" x="161" y="238" text-anchor="middle">5</text><text class="pile-tick" x="191" y="238" text-anchor="middle">6</text><text class="pile-tick" x="221" y="238" text-anchor="middle">7</text><text class="pile-tick" x="251" y="238" text-anchor="middle">8</text><text class="pile-tick" x="281" y="238" text-anchor="middle">9</text><text class="pile-tick" x="311" y="238" text-anchor="middle">10</text><text class="pile-tick" x="341" y="238" text-anchor="middle">11</text><text class="pile-tick" x="371" y="238" text-anchor="middle">12</text><text class="pile-axis" x="206" y="262" text-anchor="middle">Message number</text></svg></div>
+      <p class="pile-total"><span data-pile-total="">30</span> blocks re-read, <b data-pile-waste="">0</b> of them for nothing</p>
+    </div>
+  </div>
+  <div class="pile-controls">
+    <button type="button" class="button" data-pile-step="">Replay, one message at a time</button>
+    <p class="pile-status" data-pile-status="" aria-live="polite"></p>
+  </div>
+  <details class="pile-table">
+    <summary>See the numbers</summary>
+    <table>
+      <thead><tr><th scope="col">Message</th><th scope="col">Long chat</th><th scope="col">Of which wasted</th><th scope="col">Fresh chats</th></tr></thead>
+      <tbody><tr><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><td>3</td><td>3</td><td>0</td><td>3</td></tr><tr><td>4</td><td>4</td><td>0</td><td>4</td></tr><tr><td>5</td><td>5</td><td>4</td><td>1</td></tr><tr><td>6</td><td>6</td><td>4</td><td>2</td></tr><tr><td>7</td><td>7</td><td>4</td><td>3</td></tr><tr><td>8</td><td>8</td><td>4</td><td>4</td></tr><tr><td>9</td><td>9</td><td>8</td><td>1</td></tr><tr><td>10</td><td>10</td><td>8</td><td>2</td></tr><tr><td>11</td><td>11</td><td>8</td><td>3</td></tr><tr><td>12</td><td>12</td><td>8</td><td>4</td></tr><tr class="sum"><td>Total</td><td>78</td><td>48</td><td>30</td></tr></tbody>
+    </table>
+  </details>
+  <p class="pile-note">The sizes are made up to show the shape: every message is the same size here. Real messages vary, and tools cache recent text, which makes the climb a little less steep.</p>
+</figure>
+<script src="/assets/js/context-pile.js" defer=""></script>
 
-<ol>
-  <li>
-    <p><strong>One chat per task.</strong> When you switch to something unrelated, start fresh. In Claude Code, <code class="language-plaintext highlighter-rouge">/clear</code> does this, and the docs say it “costs nothing”. The new task stops paying for the old one, and the AI’s answers often get sharper too.</p>
-  </li>
-  <li>
-    <p><strong>Save what matters in files before you leave.</strong> Starting fresh only works if nothing important is lost. Ask the AI to write decisions, research and next steps into a file. The next chat reads that file, not the whole old conversation. I now keep a parked-ideas file and a standards file for exactly this.</p>
-  </li>
-  <li>
-    <p><strong>Keep your instruction file short.</strong> Claude Code reads a file called <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> at the start of every session, so every line in it is paid for every time. Anthropic recommends keeping it under 200 lines, because longer files use more space and Claude follows them less reliably. Mine is about 120 lines.</p>
-  </li>
-  <li>
-    <p><strong>Put the “never ever” rules in a hook, not in text.</strong> A written rule is a guideline, and the AI can decide it doesn’t apply. A <em>hook</em> is a small script that runs before every command and simply blocks it. I have one that stops the agent from pushing to my main branch or merging changes. It costs no tokens to remember, and it can’t be argued with.</p>
-  </li>
-  <li>
-    <p><strong>Send noisy work to a helper.</strong> Long test runs, big searches and log files fill up the chat fast. A <em>subagent</em> (a helper AI) can do that work in its own space and hand back a short summary. It still uses tokens, but your main chat stays small.</p>
-  </li>
-  <li>
-    <p><strong>Be specific, and plan first.</strong> “Improve my website” makes the AI look at everything. “Make the footer links bigger on phones” goes straight to the point. For bigger tasks, ask for a plan before any building starts (in Claude Code, Shift+Tab switches to plan mode). Fixing a plan is much cheaper than fixing finished work.</p>
-  </li>
-  <li>
-    <p><strong>Stop early when it goes the wrong way.</strong> Press Esc to stop the AI mid-action. <code class="language-plaintext highlighter-rouge">/rewind</code> (or Esc twice) takes you back to an earlier point. And if you’ve corrected it twice and it still isn’t right, start a fresh chat with a better prompt instead of a third correction.</p>
-  </li>
-</ol>
+<p>The chart is an illustration with made-up, equal-sized messages, not my real chat. In it, 48 of the 78 blocks the long chat re-reads belong to tasks that were already finished, and they add nothing to the answer. A fourth task would add 12 more wasted blocks to every message. So the cost of a message depends on the length of the whole chat far more than on your own words.</p>
 
-<p>Bonus tip: <strong>ask your AI to warn you when a session gets long, then start a fresh one.</strong> I added this to my own rules after my long website day, and now my agent tells me when it’s time.</p>
+<h2 id="what-i-changed">What I changed</h2>
+
+<div class="habits">
+  <section class="habit-group">
+    <ol class="habit-list">
+      <li><strong>One chat per task.</strong> When you switch to something unrelated, start fresh. In Claude Code, <code>/clear</code> does it, and the docs say it “costs nothing”. Answers often get sharper too, because the AI isn’t wading through old topics.</li>
+      <li><strong>Save what matters to a file before you leave.</strong> A fresh chat remembers nothing, so starting over only works if nothing gets lost. On 25 November I built a small command, <code>/handoff</code>, that has the agent write one short file: the goal, what’s done, the open questions and the next steps. Then I left a chat that was only at 37% of its context, long before any limit, and the new chat picked up from that file instead of the old conversation. Everything I left behind in that chat would have been wasted blocks, like the ones in the chart above.</li>
+      <li><strong>Send noisy work to a helper.</strong> Test runs, big searches and log files fill a chat fast. A <em>subagent</em>, a helper AI with its own space, can do that work and hand back a short summary. It still draws on your usage, but its mess stays out of your main chat. When I attacked my own safety guard, a subagent worked through all 97 attack commands, and my main chat only got the result: 76 of them got through (<a href="/journey/ai-hq/">chapter 3</a>).</li>
+      <li><strong>Keep the instruction file short.</strong> Claude Code reads <code>CLAUDE.md</code> at the start of every session, so every line is paid for every time. Anthropic suggests under 200 lines. On 25 November I followed their advice and cut mine by a third, from 822 words to 547.</li>
+    </ol>
+  </section>
+</div>
+
+<p>The <a href="https://code.claude.com/docs/en/costs">cost docs</a> and <a href="https://code.claude.com/docs/en/best-practices">best practices</a> cover the rest. Stop the AI early when it heads the wrong way: on a phone that’s the stop button, and in a terminal it’s Esc, with <code class="language-plaintext highlighter-rouge">/rewind</code> to jump back. Switch to plan mode with the mode control on a phone, or Shift+Tab in a terminal. And be careful with <code class="language-plaintext highlighter-rouge">/compact</code>, because to summarise a long chat the AI has to read all of it first.</p>
 
 <aside class="mistake" aria-label="My mistake">
-  <h2>My mistake</h2>
-  <p>I built this whole website in one chat: design, colours, research, ideas, the lot. By the evening, even a quick ‘looks good, thanks’ was slow and expensive, because every message dragged the whole day along with it.</p>
-  <p class="mistake-rule"><strong>The rule it gave me:</strong> one chat per task, and my agent warns me when a session gets long, so I can save the next steps to a file and start fresh.</p>
+  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">24 Nov 2026</span></p>
+  <p class="mistake-title">I built a whole website in one chat</p>
+  <p class="mistake-text">I treated one chat as a workspace that never fills up. Every message after the first task paid again for the tasks I had finished, out of the same usage limit all my other work shares. With usage credits off, that limit is where work stops.</p>
+  <p class="mistake-rule"><span>The rule now</span>One chat per task. My agent now warns me when a session gets long, saves the next steps to a file, and I start fresh.</p>
 </aside>
 
-<h2 id="be-careful-with-compact">Be careful with “compact”</h2>
+<h2 id="check-yourself">Check yourself</h2>
 
-<p>Claude Code also has <code class="language-plaintext highlighter-rouge">/compact</code>, which shrinks a long chat into a summary. It sounds like a free fix, but to write that summary the AI has to read the whole chat first. On a long session, that’s a big request in itself. Saving the important parts to a file and starting fresh is often the better choice.</p>
-
-<h2 id="try-it-yourself">Try it yourself</h2>
-
-<p>Open Claude Code in any project and type:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/context
-</code></pre></div></div>
-
-<p>You’ll see what’s taking up space right now: your instruction files, tools, and the conversation itself. Then try <code class="language-plaintext highlighter-rouge">/usage</code> to see what your session has used so far. Run them again near the end of a long chat, and the difference tells the whole story!</p>
-
-<p>And if you only do one thing, paste this into your instructions file:</p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When this session gets long or mixes unrelated topics, warn me.
-Before I start a new session, save decisions and next steps to a file.
-</code></pre></div></div>
+<div class="quiz">
+  <details>
+    <summary>You’ve spent two hours on your website in one chat. Now you need help with an email. What’s the cheapest move?</summary>
+    <p>Ask the AI to save any website decisions to a file, then start a fresh chat for the email. The email chat won’t carry two hours of website talk.</p>
+  </details>
+  <details>
+    <summary>Why does “thanks” cost more at the end of a long chat than at the start of a new one?</summary>
+    <p>Because it gets sent together with everything before it. The four words are cheap, but the day of conversation underneath them isn’t.</p>
+  </details>
+  <details>
+    <summary>You hand a big search to a subagent. Is it free?</summary>
+    <p>No. It still draws on your usage. What you save is room in your main chat, which gets a short summary instead of the whole search.</p>
+  </details>
+</div>
 
 <h2 id="go-deeper">Go deeper</h2>
 
-<p>These are the official Claude Code docs I used for this guide:</p>
+<p>The official docs I checked this chapter against:</p>
 
 <ul>
-  <li><a href="https://code.claude.com/docs/en/costs">Manage costs effectively</a>: why usage climbs, <code class="language-plaintext highlighter-rouge">/usage</code>, <code class="language-plaintext highlighter-rouge">/clear</code>, <code class="language-plaintext highlighter-rouge">/compact</code> and subagents.</li>
+  <li><a href="https://code.claude.com/docs/en/costs">Manage costs effectively</a>: why usage climbs, and what <code class="language-plaintext highlighter-rouge">/clear</code>, <code class="language-plaintext highlighter-rouge">/compact</code> and subagents do.</li>
   <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>: how <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> loads, and the 200-line target.</li>
-  <li><a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>: one task per session, plan mode, hooks for rules that can’t bend.</li>
-  <li><a href="https://platform.claude.com/docs/en/about-claude/glossary">Glossary: tokens</a>: what a token is, and how token counts differ between models.</li>
+  <li><a href="https://platform.claude.com/docs/en/about-claude/glossary">Glossary: tokens</a>: what a token is, and how counts differ between models.</li>
 </ul>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>See what’s taking up space in your chat right now:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Type this in Claude Code</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>/context</code></pre>
+</div>
+
+<p>You’ll see your instruction files, your tools and the conversation itself. Run it again near the end of a long chat and compare the totals. Then paste this into your own instruction file, so the agent does the remembering for you:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Add to CLAUDE.md</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>When this session gets long or mixes unrelated topics, warn me.
+Before I start a new session, save decisions and next steps to a file.</code></pre>
+</div>
+
 
 
   
@@ -240,7 +288,7 @@ Before I start a new session, save decisions and next steps to a file.
     
       
       
-      <a class="prev" href="/journey/five-words/"><span>← Chapter 1</span>The 5 words</a>
+      <a class="prev" href="/journey/five-words/"><span>← Chapter 1</span>Set up</a>
       
     
     
@@ -266,5 +314,6 @@ Before I start a new session, save decisions and next steps to a file.
   <div class="container footer-note">An independent learning journal, not made by or affiliated with Anthropic.</div>
 </footer>
 
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

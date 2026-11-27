@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
   <div class="container header-inner">
     <a class="site-name" href="/">Leonidas Parigoris</a>
@@ -32,60 +33,26 @@
   </div>
 </header>
 
-  <div class="container with-sidebar">
+  
+  
+  <div class="container with-sidebar no-sidebar">
     
-<aside class="toc toc-desktop" aria-label="The journey">
-  <p class="toc-heading"><a href="/journey/">The journey</a></p>
-  
-<ol class="toc-list">
-  
-  
-  
-  
-  <li><a href="/journey/five-words/"><span class="toc-num">1</span>The 5 words</a></li>
-  
-  
-  
-  
-  
-  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>Tokens and cost</a></li>
-  
-  
-  
-  
-  
-  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
-  
-  
-  
-  
-  
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
-  
-  
-  
-  
-  
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
-  
-  
-</ol>
-
-</aside>
-
-
-    <main class="content">
-      <section class="intro">
-  <h1>A data analyst learning to build with AI, safely.</h1>
-  <p class="lead">Welcome! I share what I learn, mistakes included, so you can skip them. Short chapters, plain words, and real things I built along the way.</p>
+    <main class="content" id="main" tabindex="-1">
+      <section class="hero-home">
+  <p class="kicker">For people with something to build and no coding background</p>
+  <h1>The essentials of building with AI agents, explained simply.</h1>
+  <p class="lead">What to learn first, what to skip, and the mistakes I’ve already made for you.</p>
   <p class="intro-links">
-    <a class="button" href="/journey/">Start the journey</a>
-    <a href="/about/">About me</a>
+    <a class="button" href="/journey/five-words/">Start with chapter 1</a>
+    <a href="/about/">Who writes this</a>
   </p>
+  <p class="byline">By Leonidas Parigoris, a senior data analyst who builds with AI agents. On 26 November he launched this site from his phone: 14 pull requests, each checked with screenshots before he merged it.</p>
 </section>
 
-<h2>The journey</h2>
-<ol class="chapter-list">
+<section class="home-block">
+  <h2>Learn these first</h2>
+  <p class="block-sub">In order. Each ends with something you can try in a few minutes.</p>
+  <ol class="chapter-list">
   
   
   
@@ -93,8 +60,8 @@
     <a href="/journey/five-words/">
       <span class="chapter-num">1</span>
       <span class="chapter-text">
-        <span class="chapter-title">The 5 words</span>
-        <span class="chapter-sub">The 5 words: model, harness, session, repository and GitHub</span>
+        <span class="chapter-title">Set up</span>
+        <span class="chapter-sub">Set up once, then build by talking</span>
       </span>
     </a>
   </li>
@@ -106,7 +73,7 @@
       <span class="chapter-num">2</span>
       <span class="chapter-text">
         <span class="chapter-title">Tokens and cost</span>
-        <span class="chapter-sub">Token basics: why long AI chats cost more, and 7 tricks to spend less</span>
+        <span class="chapter-sub">Why a one-line “thanks” got expensive</span>
       </span>
     </a>
   </li>
@@ -118,7 +85,7 @@
       <span class="chapter-num">3</span>
       <span class="chapter-text">
         <span class="chapter-title">Working safely</span>
-        <span class="chapter-sub">My AI headquarters: a safe home base for working with Claude</span>
+        <span class="chapter-sub">I attacked my own AI guard. 76 of 97 attacks got in.</span>
       </span>
     </a>
   </li>
@@ -149,6 +116,37 @@
   
 </ol>
 
+</section>
+
+<section class="home-block">
+  <h2>Safe to skip for now</h2>
+  <ul class="skip-list">
+    <li><strong>Learning to code.</strong> You describe what you want in plain words, and you check the result.</li>
+    <li><strong>Installing things on your laptop.</strong> Claude Code runs in the browser and in the Claude app, so I do most of my work from a phone.</li>
+    <li><strong>Plugins, connectors and custom agents.</strong> They’re useful later. Get the basics in place first.</li>
+  </ul>
+</section>
+
+<section class="home-block">
+  <h2>Mistakes I’ve already made for you</h2>
+  <div class="mistake-cards">
+    <a class="mistake-card" href="/journey/five-words/">
+      <span class="mc-label">Chapter 1</span>
+      <strong>My AI tried to raise its own permissions</strong>
+      <span>The safety layer said no, even though I had said yes. It was right.</span>
+    </a>
+    <a class="mistake-card" href="/journey/token-basics/">
+      <span class="mc-label">Chapter 2</span>
+      <strong>I built a whole website in one chat</strong>
+      <span>By the evening, “looks good, thanks” was slow, because the AI was re-reading my entire day.</span>
+    </a>
+    <a class="mistake-card" href="/journey/ai-hq/">
+      <span class="mc-label">Chapter 3</span>
+      <strong>I attacked my own AI guard. 76 of 97 attacks got in.</strong>
+      <span>So I rebuilt it to say no when it isn’t sure. Now it blocks 94.</span>
+    </a>
+  </div>
+</section>
 
     </main>
   </div>
@@ -163,5 +161,6 @@
   <div class="container footer-note">An independent learning journal, not made by or affiliated with Anthropic.</div>
 </footer>
 
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
