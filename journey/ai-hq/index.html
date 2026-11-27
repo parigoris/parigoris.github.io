@@ -157,7 +157,11 @@
 
 <h2 id="what-the-guard-protects">What the guard protects</h2>
 
-<p>My setup is the one from <a href="/journey/five-words/">chapter 1</a>: a private repository, an agent that works on branches, and pull requests I merge from my phone. The agent’s rules file asks it to plan first and never publish without me, but rules are only words. So I added a <strong>hook</strong>, a small script that Claude Code runs before every command the agent tries. That hook is my guard, and it blocks three moves: pushing straight to main, force-pushing over the history, and merging a pull request on its own.</p>
+<p>My setup is the one from <a href="/journey/five-words/">chapter 1</a>: a private repository, an agent that works on branches, and pull requests I merge from my phone. The agent’s rules file asks it to plan first and never publish without me, but rules are only words. So I added a hook:</p>
+
+<dl class="equals">
+  <div><dt>Hook</dt><dd><strong>= a small script Claude Code runs before every command</strong><span>Mine is my guard. It blocks three moves: pushing straight to main, force-pushing over the history, and merging a pull request on its own.</span></dd></div>
+</dl>
 
 <h2 id="97-attacks-76-got-through">97 attacks, 76 got through</h2>
 
@@ -204,7 +208,10 @@
 
 <p>The hook checks every command before it runs. It catches honest mistakes and most tricks, but only while it’s loaded, and the mistake below shows how easily it stops loading.</p>
 
-<p>The <strong>ruleset</strong> is a setting on GitHub itself, so it doesn’t care which command or trick reached it (<a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">about rulesets</a>). On this website’s repository, nothing gets into main without a pull request, and nobody can force-push or delete it. The list of people allowed to bypass it is empty, me included.</p>
+<dl class="equals">
+  <div><dt>Ruleset</dt><dd><strong>= a lock on GitHub’s side</strong><span>A setting on GitHub itself, so it doesn’t care which command or trick reached it (<a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">about rulesets</a>).</span></dd></div>
+</dl>
+<p>On this website’s repository, nothing gets into main without a pull request, and nobody can force-push or delete it. The list of people allowed to bypass it is empty, me included.</p>
 
 <p>The catch is that GitHub’s free plan doesn’t enforce rulesets on private repositories. My public website has one. My private home base doesn’t, so there the guard is the last line, which is why I attack it and test it so often.</p>
 

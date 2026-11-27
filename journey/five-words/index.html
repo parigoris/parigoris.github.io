@@ -159,7 +159,14 @@
 
 <p>Claude Code in the browser and in the Claude app’s <strong>Code</strong> tab runs on Pro, Max, Ultra and Team plans, and on some Enterprise seats. The free plan isn’t on the list. The cloud computer it runs on has no separate charge, and its work counts towards your plan’s normal usage limit.</p>
 
-<p>Two words matter from here on. The <strong>model</strong> is Claude, the AI that reads your message and decides what to do. The <strong>harness</strong> is Claude Code, the program around the model that opens files, runs commands, saves changes, and decides what the model is <em>allowed</em> to do (<a href="https://code.claude.com/docs/en/overview">how Claude Code works</a>).</p>
+<p>Two words matter from here on:</p>
+
+<dl class="equals">
+  <div><dt>Model</dt><dd><strong>= Claude</strong><span>The AI that reads your message and decides what to do.</span></dd></div>
+  <div><dt>Harness</dt><dd><strong>= Claude Code</strong><span>The program around the model. It opens files, runs commands, saves changes, and decides what the model is <em>allowed</em> to do.</span></dd></div>
+</dl>
+
+<p>More in the docs: <a href="https://code.claude.com/docs/en/overview">how Claude Code works</a>.</p>
 
 <p>I learned what that second part means on 26 November, when the harness refused something I had already agreed to.</p>
 
@@ -178,7 +185,12 @@
 
 <h2 id="step-2-make-a-free-github-account-and-lock-it">Step 2. Make a free GitHub account, and lock it</h2>
 
-<p>On 18 November, before I built anything, I couldn’t see why an AI app needed a second website. The answer is the <strong>session</strong>: one conversation with Claude Code, which in the cloud gets its own <strong>temporary computer</strong>. Claude copies your project onto it and works there, and when the session goes quiet for a while, that computer is deleted. <strong>GitHub</strong> stores your project for good, so Claude saves its work there first, and the next session starts by copying it back.</p>
+<p>On 18 November, before I built anything, I couldn’t see why an AI app needed a second website. The answer is in two more words:</p>
+
+<dl class="equals">
+  <div><dt>Session</dt><dd><strong>= one conversation with Claude Code</strong><span>In the cloud it gets its own temporary computer. When the session goes quiet for a while, that computer is deleted.</span></dd></div>
+  <div><dt>GitHub</dt><dd><strong>= where your project lives for good</strong><span>Claude saves its work there before the computer goes, and the next session starts by copying it back.</span></dd></div>
+</dl>
 
 <figure class="diagram">
   <img src="/assets/images/setup-session-vs-github.svg" alt="Diagram: today's session computer is temporary and gets deleted. Before that, Claude pushes the work to GitHub, which keeps it. Tomorrow's session gets a new computer and clones the repository from GitHub." width="400" height="430" />
@@ -201,7 +213,9 @@
 
 <p>On 25 November my agent tried to create a repository for me through GitHub’s API, and my own safety guard blocked it as a write it wasn’t allowed to make. The guard was right, and I made the repository myself. It’s a step I now always do by hand.</p>
 
-<p>A <strong>repository</strong> (or “repo”) is a project folder that keeps every saved change, so you can see who changed what, and when, and go back (<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories">GitHub’s explanation</a>).</p>
+<dl class="equals">
+  <div><dt>Repository</dt><dd><strong>= a project folder that remembers</strong><span>Also called a “repo”. It keeps every saved change, so you can see who changed what, and when, and go back (<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories">GitHub’s explanation</a>).</span></dd></div>
+</dl>
 
 <figure class="diagram">
   <img src="/assets/images/setup-repository.svg" alt="Diagram: a folder called my-project holds README.md and CLAUDE.md. Below it, a history of three saved changes, newest first: Add rules to CLAUDE.md, Fix a typo in README, Create repository." width="400" height="420" />
@@ -238,9 +252,12 @@
 
 <h2 id="step-6-let-claude-work-on-a-branch-and-open-a-pull-request">Step 6. Let Claude work on a branch and open a pull request</h2>
 
-<p>By default, Claude works on a <strong>branch</strong>, its own copy of the files where it saves changes in small steps (<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches">about branches</a>). Step 8 covers what actually stops it from touching main. When it reaches a stopping point, it pushes the branch to GitHub, and the session shows a <strong>Changes</strong> card with the lines added and removed, such as <code class="language-plaintext highlighter-rouge">+42 -18</code>. Tap the numbers to see what changed, then tap <strong>Create PR</strong>.</p>
+<dl class="equals">
+  <div><dt>Branch</dt><dd><strong>= Claude’s own copy of your files</strong><span>It saves changes there in small steps, away from your main version (<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches">about branches</a>).</span></dd></div>
+  <div><dt>Pull request</dt><dd><strong>= “here are my changes, may they join main?”</strong><span>A page where you read every line, comment, ask for fixes, or close it without accepting anything (<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">about pull requests</a>).</span></dd></div>
+</dl>
 
-<p>A <strong>pull request</strong> is a page that asks “here are my changes, may they join main?” (<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">about pull requests</a>). You can read every line, comment, ask for fixes in the chat, or close it without accepting anything.</p>
+<p>By default, Claude works on a branch. Step 8 covers what actually stops it from touching main. When it reaches a stopping point, it pushes the branch to GitHub, and the session shows a <strong>Changes</strong> card with the lines added and removed, such as <code class="language-plaintext highlighter-rouge">+42 -18</code>. Tap the numbers to see what changed, then tap <strong>Create PR</strong>.</p>
 
 <figure class="diagram">
   <img src="/assets/images/setup-branch-merge.svg" alt="Diagram: Claude works on a branch above the main line and saves three changes. It opens a pull request, where you read the changes. The branch joins main at a green merge point when you tap Merge pull request." width="400" height="418" />

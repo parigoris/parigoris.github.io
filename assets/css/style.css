@@ -139,6 +139,21 @@ h2 { font-size: 1.3rem; margin-top: 2em; }
 @media (max-width: 760px) { .mistake-cards { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .hero-home h1 { font-size: 2.05rem; } .hero-home .lead { font-size: 1.15rem; } }
 
+/* Word definitions as equations ("Model = Claude"): the term on the left, what it is in bold, one plain line under it.
+   Leonidas asked for "=" so the meaning is obvious at a glance. */
+.equals { margin: 16px 0 20px; padding: 4px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.equals > div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-items: baseline; padding: 12px 0; }
+.equals > div + div { border-top: 1px dashed var(--line); }
+.equals dt { grid-column: 1; font-family: var(--serif); font-size: 1.12rem; font-weight: 600; color: var(--accent); line-height: 1.35; }
+.equals dd { display: contents; }
+.equals dd strong { grid-column: 2; font-size: 1.05rem; line-height: 1.35; }
+.equals dd span { grid-column: 2; font-size: 0.93rem; color: var(--muted); max-width: 34em; }
+/* Phone: "Model = Claude" stays on one line; the explanation runs full width underneath */
+@media (max-width: 480px) {
+  .equals > div { grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; }
+  .equals dd span { grid-column: 1 / -1; margin-top: 2px; }
+}
+
 /* Header */
 .site-header { border-bottom: 1px solid var(--line); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 16px; }
