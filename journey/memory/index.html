@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>My AI invented a mistake for me · Leonidas Parigoris</title>
+  <meta name="description" content="Every session starts with a blank memory, so mine lives in files. Where a fact was missing, a helper agent filled the gap with a story that never happened, and I published it. Here’s how my files work now.">
+  <link rel="canonical" href="https://parigoris.github.io/journey/memory/">
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <!-- Social preview (LinkedIn and other link previews) -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Leonidas Parigoris">
+  <meta property="og:title" content="My AI invented a mistake for me · Leonidas Parigoris">
+  <meta property="og:description" content="Every session starts with a blank memory, so mine lives in files. Where a fact was missing, a helper agent filled the gap with a story that never happened, and I published it. Here’s how my files work now.">
+  <meta property="og:url" content="https://parigoris.github.io/journey/memory/">
+  <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Leonidas Parigoris: Things I build with AI, and what I learn along the way.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="/">Leonidas Parigoris</a>
+    <nav class="site-nav">
+      <a href="/journey/" class="active">The journey</a>
+      <a href="/about/">About</a>
+    </nav>
+  </div>
+</header>
+
+  
+  
+  <div class="container with-sidebar">
+    
+<aside class="toc toc-desktop" aria-label="The journey">
+  <p class="toc-heading"><a href="/journey/">The journey</a></p>
+  
+<ol class="toc-list">
+  
+  
+  
+  
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>Tokens and cost</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/memory/" class="active" aria-current="page"><span class="toc-num">4</span>Memory</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
+  
+  
+</ol>
+
+</aside>
+
+<details class="toc toc-mobile">
+  <summary>The journey</summary>
+  
+<ol class="toc-list">
+  
+  
+  
+  
+  <li><a href="/journey/five-words/"><span class="toc-num">1</span>Set up</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/token-basics/"><span class="toc-num">2</span>Tokens and cost</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/ai-hq/"><span class="toc-num">3</span>Working safely</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/memory/" class="active" aria-current="page"><span class="toc-num">4</span>Memory</a></li>
+  
+  
+  
+  
+  
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
+  
+  
+</ol>
+
+</details>
+
+
+    <main class="content" id="main" tabindex="-1">
+      <article class="chapter">
+  
+
+
+
+
+  
+  <ol class="progress" aria-label="Where this chapter sits in the journey">
+    
+    <li class="done"><a href="/journey/five-words/"><span>1</span><small>Set up</small></a></li><li class="done"><a href="/journey/token-basics/"><span>2</span><small>Tokens and cost</small></a></li><li class="done"><a href="/journey/ai-hq/"><span>3</span><small>Working safely</small></a></li><li class="here" aria-current="step"><span>4</span><small>Memory</small></li><li class=""><a href="/journey/automation/"><span>5</span><small>Automation</small></a></li>
+  </ol>
+  <p class="chapter-label">Chapter 4 · Memory</p>
+  <h1>My AI invented a mistake for me</h1>
+  <p class="summary">Every session starts with a blank memory, so mine lives in files. Where a fact was missing, a helper agent filled the gap with a story that never happened, and I published it. Here’s how my files work now.</p>
+  
+  <p class="meta">27 November 2026 · 6 min read</p>
+
+  
+  <aside class="in-short" aria-label="In short">
+    <h2>The 30-second version</h2>
+    <ul>
+      <li>A session, or a helper agent, only knows what’s in its <strong>context</strong>. When the session ends, that’s gone.</li>
+      <li>Ask an AI to write about something it can’t see, and it tends to fill the gap with something <strong>plausible</strong>. Mine invented a mistake, and it went live on this site.</li>
+      <li>So memory lives in <strong>files in the repository</strong>: rules, a task board, handoff notes and logs. Anything a chat remembers about GitHub gets checked again before it’s used.</li>
+      
+    </ul>
+  </aside>
+  
+
+  
+
+  
+
+  <p class="lede">On 26 November I found a mistake on my own website that I had never made.</p>
+
+<p>Chapter 1 had a “My mistake” box that said “I expected Claude to remember yesterday”, and a card on the home page said it too. It sounded right, because most beginners make that mistake. But nothing like it was in my logs. A helper agent writing the chapter had written a believable mistake instead of a real one from my files. I read it and merged it.</p>
+
+<p>Nothing about the text looked wrong, and that was the problem. The rule I made that day only covered new boxes. On 27 November an editor agent checked the old ones and found a second invented story, in chapter 2, about building this whole website in one chat. That one was live too, and it’s gone now.</p>
+
+<h2 id="the-model-only-knows-what-it-can-see">The model only knows what it can see</h2>
+
+<dl class="equals">
+  <div><dt>Context</dt><dd><strong>= everything the model can see right now</strong><span>Your messages, the chat so far, and every file it has opened in this session. When the session ends, the context goes with it.</span></dd></div>
+</dl>
+
+<p>A new session knows nothing about yesterday. A helper agent knows even less, because it starts with only the task you hand it. What I hadn’t expected was what happens at the edge of the context. Ask an AI to write about something it can’t see, and it rarely stops to say so. It writes what usually happens, and what usually happens reads exactly like the truth.</p>
+
+<p>So memory needs two things: the facts have to sit where every session will find them, and “it’s in the file” has to be the only proof that counts.</p>
+
+<h2 id="memory-lives-in-files">Memory lives in files</h2>
+
+<p>My home base is a private repository called <code class="language-plaintext highlighter-rouge">hq</code>. It has four kinds of memory, and each one answers a question a new session would otherwise have to ask me.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>File</th>
+      <th>The question it answers</th>
+      <th>When it’s read</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CLAUDE.md</code></td>
+      <td>How do we work here?</td>
+      <td>Automatically, at the start of every session</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">plans/board.md</code></td>
+      <td>Who’s doing what, and what’s finished?</td>
+      <td>Before any new job, so nothing is done twice</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">handoffs/</code></td>
+      <td>Where did we stop?</td>
+      <td>In the first message of a new session</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">logs/</code></td>
+      <td>What happened, and what did we decide?</td>
+      <td>Before writing anything that claims a fact</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The logs are three plain files with one line per entry. The mistakes log holds what went wrong and the rule that followed. The security log records every access I grant or refuse, and the learning log gets one line per session. They’re dull to write, and they’re the only reason this chapter can give you dates.</p>
+
+<p><code class="language-plaintext highlighter-rouge">CLAUDE.md</code> is the only one of these that Claude Code loads by itself (<a href="https://code.claude.com/docs/en/memory">how Claude remembers your project</a>). The others work because <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> tells the agent when to read them, and because they live in the repository, which every session copies in. <a href="/journey/five-words/">Chapter 1</a> has that setup.</p>
+
+<aside class="mistake" aria-label="My mistake">
+  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">26 Nov 2026</span></p>
+  <p class="mistake-title">A helper agent made up my mistake, and I published it</p>
+  <p class="mistake-text">Every chapter needs a “My mistake” box. The helper agent writing chapter 1 didn’t take one from my mistakes log. It wrote the mistake most beginners make, because that’s what usually happens. I didn’t check it against my logs either. The box has since been replaced with a real, logged mistake.</p>
+  <p class="mistake-rule"><span>The rule now</span>Every “My mistake” box comes from my mistakes log, or I confirm it myself. Facts on this site come from my log files, never from what probably happened.</p>
+</aside>
+
+<h2 id="a-handoff-is-a-note-to-a-stranger">A handoff is a note to a stranger</h2>
+
+<p>Before I leave a session, I type <code class="language-plaintext highlighter-rouge">/handoff</code>. It’s a command I built that writes one file of under 300 words with six headings: the goal, what’s done, the current state, the next steps with the first one kept small, open questions for me, and the 3 to 6 files to read first.</p>
+
+<p>The new session then starts with one line:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">The first message of a new session</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>Run /start, then read handoffs/2026-11-27-chapters-4-5.md and continue from the next steps.</code></pre>
+</div>
+
+<p>The session that wrote this chapter started with a line like that. Its handoff file listed which chapters already exist and which stories they use, where the facts live, and which shell commands my guard blocks. I didn’t have to explain any of it, and that’s the test of a good handoff. <a href="/journey/token-basics/">Chapter 2</a> covers when to leave a chat and start fresh.</p>
+
+<h2 id="what-a-chat-remembers-goes-stale">What a chat remembers goes stale</h2>
+
+<p>Files fix forgetting, but they can’t fix remembering wrong. On 26 November my agent kept adding work to merge requests I had already merged. In its context they were still open, because they were open when it last looked. Six commits ended up stranded on branches nobody would merge, and it sent me “PR READY” links for two merge requests I had already merged.</p>
+
+<p>The fix is a habit. Anything a chat remembers about the world outside it is a snapshot, so before every upload and every “PR READY” line, my agent now checks the merge request on GitHub again.</p>
+
+<p>The other kind of stale memory is a fix that never reaches the repository. When my guard stopped loading (<a href="/journey/ai-hq/">chapter 3</a>), the fix was a settings file at <code class="language-plaintext highlighter-rouge">/home/user/.claude/settings.json</code>, on the session’s temporary computer. It’s deleted with the session, so I’ve made the same fix three times. A fix that isn’t in the repository is a fix you’ll make again.</p>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>Before you close your next session, paste this:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Your handoff prompt</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>Before I close this session, write a handoff file in a folder called handoffs/.
+Name it with today&#39;s date and a short topic. Keep it under 300 words, with these headings:
+Goal, Done, Current state, Next steps (the first one small), Open questions for me, Key files to read first.
+Check on GitHub which pull requests are still open before you write the current state.
+Save it on a branch and open a pull request.
+Then give me one line to paste as the first message of the new session.</code></pre>
+</div>
+
+<p>Merge the pull request before you start the new session, or the new session won’t see the file. Then add these lines to your instruction file, so the agent keeps the record and sticks to it:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Add to CLAUDE.md</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>Keep a mistakes log in logs/mistakes-log.md: one line per real mistake, with the date, what went wrong, why, and the rule that followed.
+Never write that something happened unless it is in a file in this repository or I confirm it. If you can&#39;t find it, say so.
+Before you act on anything you remember about GitHub, such as an open pull request, check it again.</code></pre>
+</div>
+
+<h2 id="check-yourself">Check yourself</h2>
+
+<div class="quiz">
+  <details>
+    <summary>A helper agent drafts a “lessons learned” section for your project. It reads well. What do you check before you use it?</summary>
+    <p>That every event in it is in your files. An agent that can’t see what happened writes what usually happens, and that reads just as well as the truth.</p>
+  </details>
+  <details>
+    <summary>Your fix works today, but it lives only on the session’s temporary computer. What happens tomorrow?</summary>
+    <p>It’s deleted with the computer, and the problem comes back. Put the fix in the repository, or at least a check that catches the problem at the start of every session.</p>
+  </details>
+  <details>
+    <summary>Your chat says a pull request is still open. That was true an hour ago. Can the agent add more work to it?</summary>
+    <p>Only after it checks on GitHub. The chat remembers what it last saw. If you merged the pull request since then, new commits land on a branch nobody will merge.</p>
+  </details>
+</div>
+
+<h2 id="go-deeper">Go deeper</h2>
+
+<p>The official page I checked this chapter against:</p>
+
+<ul>
+  <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>: what loads at the start of a session, where <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> files go, and how to keep them short.</li>
+</ul>
+
+
+  
+  
+  <nav class="chapter-nav" aria-label="Chapter navigation">
+    
+      
+      
+      <a class="prev" href="/journey/ai-hq/"><span>← Chapter 3</span>Working safely</a>
+      
+    
+    
+      
+      
+      <a class="next" href="/journey/automation/"><span>Chapter 5 →</span>Automation</a>
+      
+    
+  </nav>
+  
+</article>
+
+    </main>
+  </div>
+  <footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Leonidas Parigoris</span>
+    <span class="footer-links">
+      <a href="https://www.linkedin.com/in/leonidas-parigoris-139921197" rel="me">LinkedIn</a>
+      <a href="https://github.com/parigoris" rel="me">GitHub</a>
+    </span>
+  </div>
+  <div class="container footer-note">An independent learning journal, not made by or affiliated with Anthropic.</div>
+</footer>
+
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

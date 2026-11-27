@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 462" role="img" aria-labelledby="t d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="16">
+  <title id="t">The lethal trifecta, and my news agent</title>
+  <desc id="d">The lethal trifecta has three legs. My scheduled news agent has only one of them. Untrusted content: on, because it reads the open web, where any page could hide an instruction. Private data: off, because no repository and no connectors are attached. A way to send data out: off, because it can't edit, push or open pull requests, and can only send me a message.</desc>
+  <!-- Colours: solid accent = the leg the agent has; dashed muted = the legs taken away; ink = names.
+       Same palette and contrast as setup-session-vs-github.svg. -->
+  <style>
+    .bg { fill: #faf6f0; } .box { fill: #ffffff; } .ink { fill: #2b2420; } .mut { fill: #6b5e55; } .acc { fill: #b4532a; }
+    .s-ink { stroke: #2b2420; } .s-mut { stroke: #6b5e55; } .s-acc { stroke: #b4532a; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2a231e; } .box { fill: #262019; } .ink { fill: #efe7df; } .mut { fill: #b9aa9d; } .acc { fill: #e3906a; }
+      .s-ink { stroke: #efe7df; } .s-mut { stroke: #b9aa9d; } .s-acc { stroke: #e3906a; }
+    }
+  </style>
+  <rect class="bg" x="0" y="0" width="400" height="462" rx="16"/>
+
+  <text class="ink" x="24" y="44" font-size="18" font-weight="700">The lethal trifecta</text>
+  <text class="mut" x="24" y="68">My news agent has 1 of the 3 legs</text>
+
+  <!-- Leg 1: on (solid accent) -->
+  <rect class="box s-acc" x="24" y="88" width="352" height="104" rx="12" stroke-width="3"/>
+  <text class="acc" x="44" y="122" font-size="18" font-weight="700">Untrusted content</text>
+  <text class="acc" x="356" y="122" font-weight="700" text-anchor="end">ON</text>
+  <text class="ink" x="44" y="150">It reads the open web, where</text>
+  <text class="ink" x="44" y="172">any page could hide an instruction</text>
+
+  <!-- Leg 2: off (dashed muted) -->
+  <rect class="box s-mut" x="24" y="210" width="352" height="104" rx="12" stroke-width="2" stroke-dasharray="7 6"/>
+  <text class="ink" x="44" y="244" font-size="18" font-weight="700">Private data</text>
+  <text class="mut" x="356" y="244" font-weight="700" text-anchor="end">OFF</text>
+  <text class="mut" x="44" y="272">No repository and no connectors</text>
+  <text class="mut" x="44" y="294">are attached, so nothing to leak</text>
+
+  <!-- Leg 3: off (dashed muted) -->
+  <rect class="box s-mut" x="24" y="332" width="352" height="106" rx="12" stroke-width="2" stroke-dasharray="7 6"/>
+  <text class="ink" x="44" y="366" font-size="18" font-weight="700">A way to send data out</text>
+  <text class="mut" x="356" y="366" font-weight="700" text-anchor="end">OFF</text>
+  <text class="mut" x="44" y="394">It can't edit, push or open pull</text>
+  <text class="mut" x="44" y="416">requests. It can only message me</text>
+</svg>

@@ -63,13 +63,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -102,13 +102,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -126,7 +126,7 @@
   
   <ol class="progress" aria-label="Where this chapter sits in the journey">
     
-    <li class="done"><a href="/journey/five-words/"><span>1</span><small>Set up</small></a></li><li class="done"><a href="/journey/token-basics/"><span>2</span><small>Tokens and cost</small></a></li><li class="here" aria-current="step"><span>3</span><small>Working safely</small></li><li class=" soon"><span>4</span><small>Memory<i class="visually-hidden"> (coming soon)</i></small></li><li class=" soon"><span>5</span><small>Automation<i class="visually-hidden"> (coming soon)</i></small></li>
+    <li class="done"><a href="/journey/five-words/"><span>1</span><small>Set up</small></a></li><li class="done"><a href="/journey/token-basics/"><span>2</span><small>Tokens and cost</small></a></li><li class="here" aria-current="step"><span>3</span><small>Working safely</small></li><li class=""><a href="/journey/memory/"><span>4</span><small>Memory</small></a></li><li class=""><a href="/journey/automation/"><span>5</span><small>Automation</small></a></li>
   </ol>
   <p class="chapter-label">Chapter 3 · Working safely</p>
   <h1>I attacked my own AI guard. 76 of 97 attacks got in.</h1>
@@ -140,7 +140,7 @@
     <ul>
       <li>My own tests all passed. An independent AI reviewer still found <strong>9 gaps</strong>, and later an attacking agent got <strong>76 of 97</strong> commands past my guard.</li>
       <li>I rebuilt the guard to <strong>fail closed</strong>: if it can’t read a command with certainty, the answer is no. It now blocks 94 of the 97.</li>
-      <li>The guard also switched itself off, <strong>twice</strong>, without a word. A one-line test at the start of each session is what caught it.</li>
+      <li>The guard also switched itself off, <strong>three times</strong>, without a word. A one-line test push is what caught it each time.</li>
       
     </ul>
   </aside>
@@ -166,7 +166,7 @@
 
 <h2 id="97-attacks-76-got-through">97 attacks, 76 got through</h2>
 
-<p>On 26 November a test push found the first hole. A push to main, tucked inside a small shell loop, went straight past the guard. The guard checked the first word of each command for <code class="language-plaintext highlighter-rouge">git</code>, and in a loop the first word is <code class="language-plaintext highlighter-rouge">do</code>. It was a dry run, a rehearsal that stops before anything is sent, so nothing was pushed. But a two-letter word had fooled the guard, and I stopped assuming the rest of it was fine.</p>
+<p>On 26 November a test push found the first hole. A push to main, tucked inside a small shell loop, went straight past the guard. The guard checked the first word of each command for <code class="language-plaintext highlighter-rouge">git</code>, and in a loop the first word is <code class="language-plaintext highlighter-rouge">do</code>. It was a dry run, a rehearsal that stops before anything is sent, so nothing was pushed. But a two-letter word had fooled the guard, so I stopped assuming the rest of it was fine.</p>
 
 <p>So I set up a <strong>red team</strong>, an agent whose only job is to play the attacker. My go-ahead was “go with any ideas, no need to ask me”. It wrote 97 attack commands and fed each one to a frozen copy of the guard, which only judged them. None of them ever ran.</p>
 
@@ -205,27 +205,26 @@
   <figcaption class="figure-note">What gets past one layer falls to the next. Only the third sits on GitHub, outside the agent's session.</figcaption>
 </figure>
 
-<p>The rules work like a sign on the door: the agent reads them and mostly follows them, but nothing forces it to.</p>
-
-<p>The hook checks every command before it runs. It catches honest mistakes and most tricks, but only while it’s loaded, and the mistake below shows how easily it stops loading.</p>
+<p>The rules are a sign on the door: the agent mostly follows them, but nothing forces it to. The hook catches honest mistakes and most tricks, but only while it’s loaded, and the mistake below shows how easily it stops loading.</p>
 
 <dl class="equals">
   <div><dt>Ruleset</dt><dd><strong>= a lock on GitHub’s side</strong><span>A setting on GitHub itself, so it doesn’t care which command or trick reached it (<a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">about rulesets</a>).</span></dd></div>
 </dl>
+
 <p>On this website’s repository, nothing gets into main without a pull request, and nobody can force-push or delete it. The list of people allowed to bypass it is empty, me included.</p>
 
-<p>The catch is that GitHub’s free plan doesn’t enforce rulesets on private repositories. My public website has one. My private home base doesn’t, so there the guard is the last line, which is why I attack it and test it so often.</p>
+<p>The catch is that GitHub’s free plan doesn’t enforce rulesets on private repositories. My private home base has none, so there the guard is the last line, which is why I attack it and test it so often.</p>
 
 <aside class="mistake" aria-label="My mistake">
-  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">18 and 26 Nov 2026</span></p>
-  <p class="mistake-title">My guard switched itself off. Twice.</p>
-  <p class="mistake-text">On 18 November, the day I built the guard, I opened a session with two repositories in it. The guard quietly stopped loading, because the session’s main folder moved away from the settings file that switches it on. A test push to main went through, as a dry run, so nothing was sent. I fixed it and wrote a start-of-session check. On 26 November it happened again, after I attached two repositories in the middle of a session. Another test push caught it, and GitHub confirmed that main hadn’t changed. Nothing warned me either time. Only the test did.</p>
-  <p class="mistake-rule"><span>The rule now</span>Every session starts with a test push to main, and it must be blocked. I repeat it every time a repository is added. If it goes through, all other work stops until the guard is back.</p>
+  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">18, 26 and 27 Nov 2026</span></p>
+  <p class="mistake-title">My guard switched itself off. Three times.</p>
+  <p class="mistake-text">On 18 November, the day I built the guard, I opened a session with two repositories in it. The guard quietly stopped loading, because the session’s main folder moved away from the settings file that switches it on. A test push to main went through, as a dry run, so nothing was sent. I fixed it and wrote a start-of-session check. On 26 November it happened again after I attached two repositories, and on 27 November after the session restarted. Each time a test push caught it, and main on GitHub hadn’t changed. Nothing warned me. Only the test did.</p>
+  <p class="mistake-rule"><span>The rule now</span>Every session starts with a test push to main, and it must be blocked. I repeat it after every restart and every new repository. If it goes through, all other work stops until the guard is back.</p>
 </aside>
 
 <h2 id="try-it-yourself">Try it yourself</h2>
 
-<p>This is the test that caught my guard twice. A dry run asks git to rehearse sending your work to the main version, then stop before anything changes on GitHub. If you have any guard against pushing to main, the rehearsal must be blocked. Paste this at the start of a session:</p>
+<p>This is the test that caught my guard all three times. A dry run asks git to rehearse sending your work to main, then stop before anything changes on GitHub. If you have any guard against pushing to main, the rehearsal must be blocked. Paste this at the start of a session:</p>
 
 <div class="try">
   <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Start-of-session test</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
@@ -235,9 +234,9 @@ It must be blocked. If it is not blocked, stop and tell me before doing anything
 Repeat this check every time a new repository is added to this session.</code></pre>
 </div>
 
-<p>When Claude asks to run the command, read it before you approve it, and make sure <code class="language-plaintext highlighter-rouge">--dry-run</code> is still in it. Without that flag, it’s a real push.</p>
+<p>Before you approve the command, check that <code class="language-plaintext highlighter-rouge">--dry-run</code> is still in it. Without that flag, it’s a real push.</p>
 
-<p>If you don’t have a guard yet, the rehearsal won’t be blocked, and that’s a useful answer too. For a public repository, a ruleset on GitHub is free, and it’s the layer to add first. For the rules that go in your first instruction file, see the first task in <a href="/journey/five-words/">chapter 1</a>.</p>
+<p>If you don’t have a guard yet, the rehearsal won’t be blocked, and that’s a useful answer too. For a public repository, a ruleset on GitHub is free, and it’s the layer to add first.</p>
 
 <h2 id="check-yourself">Check yourself</h2>
 
@@ -269,7 +268,8 @@ Repeat this check every time a new repository is added to this session.</code></
     
       
       
-      <div class="next soon"><span>Chapter 4 →</span>Memory (coming soon)</div>
+      <a class="next" href="/journey/memory/"><span>Chapter 4 →</span>Memory</a>
+      
     
   </nav>
   
