@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <title>Why long AI chats get slow, and the habit that fixes it · Leonidas Parigoris</title>
-  <meta name="description" content="I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.">
+  <meta name="description" content="Every message you send makes the AI read the whole chat again. Here’s what that costs, why a long chat gets slower, and the four habits I use because of it.">
   <link rel="canonical" href="https://parigoris.github.io/journey/token-basics/">
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <!-- Social preview (LinkedIn and other link previews) -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Leonidas Parigoris">
   <meta property="og:title" content="Why long AI chats get slow, and the habit that fixes it · Leonidas Parigoris">
-  <meta property="og:description" content="I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.">
+  <meta property="og:description" content="Every message you send makes the AI read the whole chat again. Here’s what that costs, why a long chat gets slower, and the four habits I use because of it.">
   <meta property="og:url" content="https://parigoris.github.io/journey/token-basics/">
   <meta property="og:image" content="https://parigoris.github.io/assets/images/social-preview.png">
   <meta property="og:image:width" content="1200">
@@ -63,13 +63,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -102,13 +102,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -126,11 +126,11 @@
   
   <ol class="progress" aria-label="Where this chapter sits in the journey">
     
-    <li class="done"><a href="/journey/five-words/"><span>1</span><small>Set up</small></a></li><li class="here" aria-current="step"><span>2</span><small>Tokens and cost</small></li><li class=""><a href="/journey/ai-hq/"><span>3</span><small>Working safely</small></a></li><li class=" soon"><span>4</span><small>Memory<i class="visually-hidden"> (coming soon)</i></small></li><li class=" soon"><span>5</span><small>Automation<i class="visually-hidden"> (coming soon)</i></small></li>
+    <li class="done"><a href="/journey/five-words/"><span>1</span><small>Set up</small></a></li><li class="here" aria-current="step"><span>2</span><small>Tokens and cost</small></li><li class=""><a href="/journey/ai-hq/"><span>3</span><small>Working safely</small></a></li><li class=""><a href="/journey/memory/"><span>4</span><small>Memory</small></a></li><li class=""><a href="/journey/automation/"><span>5</span><small>Automation</small></a></li>
   </ol>
   <p class="chapter-label">Chapter 2 · Tokens and cost</p>
   <h1>Why long AI chats get slow, and the habit that fixes it</h1>
-  <p class="summary">I built this website in one long chat with an AI agent. By the evening, even a quick “looks good” took ages. Here’s what was going on, and what I changed because of it.</p>
+  <p class="summary">Every message you send makes the AI read the whole chat again. Here’s what that costs, why a long chat gets slower, and the four habits I use because of it.</p>
   
   <p class="meta">24 November 2026 · 6 min read</p>
 
@@ -150,11 +150,9 @@
 
   
 
-  <p class="lede">On 24 November I built most of this website in one Claude Code chat, from morning to evening.</p>
+  <p class="lede">On 24 November I gave my agent a new rule: when a session gets long or mixes unrelated topics, warn me and suggest a fresh one.</p>
 
-<p>Colours, the home page, research on line spacing, a build log, a pile of new ideas: all in the same conversation. It worked well. By the evening my job was mostly to check the result and confirm it looked good, which is about as easy as work gets. Even those quick confirmations started to take ages.</p>
-
-<p>Nothing was broken. Every reply was dragging my whole day along with it, and every re-read came out of my plan’s usage limit.</p>
+<p>The reason is in the rule itself, because every message makes the AI re-read the whole chat. A long chat doesn’t break. Each reply just gets slower and takes a bigger bite out of my plan’s usage limit, so a quick “looks good” at the end of a long day costs far more than the same words in a new chat.</p>
 
 <h2 id="what-a-message-actually-costs">What a message actually costs</h2>
 
@@ -167,15 +165,15 @@
 </div>
 <p class="figure-note">Roughly how a short phrase gets cut up (␣ marks a space). The exact split depends on the model.</p>
 
-<p>Anthropic puts a Claude token at about 3.5 English characters on earlier models. Claude 4.7 and later cut the same text finer, into about 30% more tokens, so the same chat uses more of your limit on a newer model. Tokens count in both directions, for what the AI reads and for what it writes.</p>
+<p>Anthropic puts a Claude token at about 3.5 English characters on earlier models. Claude Opus 4.7 brought a new tokenizer that cuts the same text finer, into up to about 35% more tokens depending on the text, so the same chat can use more of your limit on a newer model (<a href="https://simonwillison.net/2026/Apr/20/claude-token-counts/">Simon Willison measured it</a>). Tokens count in both directions, for what the AI reads and for what it writes.</p>
 
 <p>None of this costs me money, because I keep <strong>usage credits</strong> (once called extra usage, in Settings &gt; Usage) switched off. With them off, work stops when I reach my plan’s usage limit and waits until the limit resets. Every token moves me closer to that ceiling instead of adding to a bill.</p>
 
 <h2 id="every-message-carries-the-whole-chat">Every message carries the whole chat</h2>
 
-<p>The model has no memory between messages. So each time I pressed send, Claude Code sent it the <strong>entire conversation</strong> again: every earlier message, every file it had opened, every result it got back. So even a one-line confirmation carried the whole day with it.</p>
+<p>The model has no memory between messages. So each time I pressed send, Claude Code sent it the <strong>entire conversation</strong> again: every earlier message, every file it had opened, every result it got back. A one-line confirmation travelled with all of it.</p>
 
-<p>Recent text is cached, so re-reading it is charged at a lower rate than new text. A lower rate still adds up when the pile is a day long.</p>
+<p>Recent text is cached, so re-reading it is charged at a lower rate than new text. A lower rate still adds up when the pile is long.</p>
 
 <figure class="pile" data-context-pile="">
   <figcaption class="pile-head">
@@ -223,8 +221,8 @@
   <section class="habit-group">
     <ol class="habit-list">
       <li><strong>One chat per task.</strong> When you switch to something unrelated, start fresh. In Claude Code, <code>/clear</code> does it, and the docs say it “costs nothing”. Answers often get sharper too, because the AI isn’t wading through old topics.</li>
-      <li><strong>Save what matters to a file before you leave.</strong> A fresh chat remembers nothing, so starting over only works if nothing gets lost. On 25 November I built a small command, <code>/handoff</code>, that has the agent write one short file: the goal, what’s done, the open questions and the next steps. Then I left a chat that was only at 37% of its context, long before any limit, and the new chat picked up from that file instead of the old conversation. Everything I left behind in that chat would have been wasted blocks, like the ones in the chart above.</li>
-      <li><strong>Send noisy work to a helper.</strong> Test runs, big searches and log files fill a chat fast. A <em>subagent</em>, a helper AI with its own space, can do that work and hand back a short summary. It still draws on your usage, but its mess stays out of your main chat. When I attacked my own safety guard, a subagent worked through all 97 attack commands, and my main chat only got the result: 76 of them got through (<a href="/journey/ai-hq/">chapter 3</a>).</li>
+      <li><strong>Save what matters to a file before you leave.</strong> A fresh chat remembers nothing, so starting over only works if nothing gets lost. On 25 November my <code>/handoff</code> command saved the state to one file, and I left a chat that was only at 37% of its context. The new chat started from that file, not from the old pile of blocks (<a href="/journey/memory/">chapter 4</a> shows the file).</li>
+      <li><strong>Send noisy work to a helper.</strong> Test runs, big searches and log files fill a chat fast. A <em>subagent</em>, a helper AI with its own space, can do that work and hand back a short summary. It still draws on your usage, but its mess stays out of your main chat. When a subagent fed 97 attack commands to my safety guard, my main chat only got the score (<a href="/journey/ai-hq/">chapter 3</a>; more on subagents in <a href="/journey/automation/">chapter 5</a>).</li>
       <li><strong>Keep the instruction file short.</strong> Claude Code reads <code>CLAUDE.md</code> at the start of every session, so every line is paid for every time. Anthropic suggests under 200 lines. On 25 November I followed their advice and cut mine by a third, from 822 words to 547.</li>
     </ol>
   </section>
@@ -233,11 +231,28 @@
 <p>The <a href="https://code.claude.com/docs/en/costs">cost docs</a> and <a href="https://code.claude.com/docs/en/best-practices">best practices</a> cover the rest. Stop the AI early when it heads the wrong way: on a phone that’s the stop button, and in a terminal it’s Esc, with <code class="language-plaintext highlighter-rouge">/rewind</code> to jump back. Switch to plan mode with the mode control on a phone, or Shift+Tab in a terminal. And be careful with <code class="language-plaintext highlighter-rouge">/compact</code>, because to summarise a long chat the AI has to read all of it first.</p>
 
 <aside class="mistake" aria-label="My mistake">
-  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">24 Nov 2026</span></p>
-  <p class="mistake-title">I built a whole website in one chat</p>
-  <p class="mistake-text">I treated one chat as a workspace that never fills up. Every message after the first task paid again for the tasks I had finished, out of the same usage limit all my other work shares. With usage credits off, that limit is where work stops.</p>
-  <p class="mistake-rule"><span>The rule now</span>One chat per task. My agent now warns me when a session gets long, saves the next steps to a file, and I start fresh.</p>
+  <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">26 Nov 2026</span></p>
+  <p class="mistake-title">My agent sent me the same long message twice</p>
+  <p class="mistake-text">Background alarms kept telling my agent that a branch wasn’t saved to GitHub. They were false. Each time, it answered with the full message about three merge requests, so I read the same thing twice, and both copies stayed in the chat to be re-read with every message after.</p>
+  <p class="mistake-rule"><span>The rule now</span>Answer a false alarm in one line, or not at all.</p>
 </aside>
+
+<h2 id="try-it-yourself">Try it yourself</h2>
+
+<p>See what’s taking up space in your chat right now:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Type this in Claude Code</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>/context</code></pre>
+</div>
+
+<p>You’ll see your instruction files, your tools and the conversation itself. Run it again near the end of a long chat and compare the totals. Then paste this into your own instruction file, so the agent does the remembering for you:</p>
+
+<div class="try">
+  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Add to CLAUDE.md</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
+  <pre class="try-code"><code>When this session gets long or mixes unrelated topics, warn me.
+Before I start a new session, save decisions and next steps to a file.</code></pre>
+</div>
 
 <h2 id="check-yourself">Check yourself</h2>
 
@@ -265,24 +280,6 @@
   <li><a href="https://code.claude.com/docs/en/memory">How Claude remembers your project</a>: how <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> loads, and the 200-line target.</li>
   <li><a href="https://platform.claude.com/docs/en/about-claude/glossary">Glossary: tokens</a>: what a token is, and how counts differ between models.</li>
 </ul>
-
-<h2 id="try-it-yourself">Try it yourself</h2>
-
-<p>See what’s taking up space in your chat right now:</p>
-
-<div class="try">
-  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Type this in Claude Code</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
-  <pre class="try-code"><code>/context</code></pre>
-</div>
-
-<p>You’ll see your instruction files, your tools and the conversation itself. Run it again near the end of a long chat and compare the totals. Then paste this into your own instruction file, so the agent does the remembering for you:</p>
-
-<div class="try">
-  <div class="try-bar"><span class="try-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="try-label">Add to CLAUDE.md</span><button type="button" class="try-copy" data-copy="" hidden="">Copy</button></div>
-  <pre class="try-code"><code>When this session gets long or mixes unrelated topics, warn me.
-Before I start a new session, save decisions and next steps to a file.</code></pre>
-</div>
-
 
 
   

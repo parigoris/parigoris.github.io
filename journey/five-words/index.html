@@ -63,13 +63,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -102,13 +102,13 @@
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">4</span>Memory<small>soon</small></span></li>
+  <li><a href="/journey/memory/"><span class="toc-num">4</span>Memory</a></li>
   
   
   
   
   
-  <li><span class="toc-soon"><span class="toc-num">5</span>Automation<small>soon</small></span></li>
+  <li><a href="/journey/automation/"><span class="toc-num">5</span>Automation</a></li>
   
   
 </ol>
@@ -126,13 +126,13 @@
   
   <ol class="progress" aria-label="Where this chapter sits in the journey">
     
-    <li class="here" aria-current="step"><span>1</span><small>Set up</small></li><li class=""><a href="/journey/token-basics/"><span>2</span><small>Tokens and cost</small></a></li><li class=""><a href="/journey/ai-hq/"><span>3</span><small>Working safely</small></a></li><li class=" soon"><span>4</span><small>Memory<i class="visually-hidden"> (coming soon)</i></small></li><li class=" soon"><span>5</span><small>Automation<i class="visually-hidden"> (coming soon)</i></small></li>
+    <li class="here" aria-current="step"><span>1</span><small>Set up</small></li><li class=""><a href="/journey/token-basics/"><span>2</span><small>Tokens and cost</small></a></li><li class=""><a href="/journey/ai-hq/"><span>3</span><small>Working safely</small></a></li><li class=""><a href="/journey/memory/"><span>4</span><small>Memory</small></a></li><li class=""><a href="/journey/automation/"><span>5</span><small>Automation</small></a></li>
   </ol>
   <p class="chapter-label">Chapter 1 · Set up</p>
   <h1>Set up once, then build by talking</h1>
   <p class="summary">The short list of things you need in place before Claude Code can build for you, what each one is for, and what breaks if you skip it. No coding needed.</p>
   
-  <p class="meta">26 November 2026 · 10 min read</p>
+  <p class="meta">26 November 2026 · 9 min read</p>
 
   
   <aside class="in-short" aria-label="In short">
@@ -150,9 +150,9 @@
 
   
 
-  <p class="lede">Eight setup steps stand between you and the first time you build something just by describing it. I did them once, from an iPhone, and this website went live after 14 pull requests, each one merged by me.</p>
+  <p class="lede">Eight setup steps stand between you and the first time you build something by describing it. I did them once, from an iPhone, and this website went live after 14 pull requests, each one merged by me.</p>
 
-<p>When I started, words like “harness” and “repo” came at me fast, as if everyone already knew them. You need only a handful, and each one makes sense at the step where it starts to matter. Here are the steps in the order I’d do them again, with what breaks if you skip one. You don’t need to know how to code.</p>
+<p>You don’t need to know how to code, and you need only a handful of new words. Each one comes in at the step where it starts to matter. Here are the steps in the order I’d do them again, with what breaks if you skip one.</p>
 
 <p><em>An unofficial guide, not made by or affiliated with Anthropic. I checked every step against the official docs on 26 November 2026. Screens change, so a button may have moved.</em></p>
 
@@ -167,9 +167,7 @@
   <div><dt>Harness</dt><dd><strong>= Claude Code</strong><span>The program around the model. It opens files, runs commands, saves changes, and decides what the model is <em>allowed</em> to do.</span></dd></div>
 </dl>
 
-<p>More in the docs: <a href="https://code.claude.com/docs/en/overview">how Claude Code works</a>.</p>
-
-<p>I learned what that second part means on 26 November, when the harness refused something I had already agreed to.</p>
+<p>More in the docs: <a href="https://code.claude.com/docs/en/overview">how Claude Code works</a>. I learned what “allowed” means on 26 November, when the harness refused something I had already agreed to.</p>
 
 <aside class="mistake" aria-label="My mistake">
   <p class="mistake-kicker"><span class="mistake-badge">My mistake</span><span class="mistake-date">26 Nov 2026</span></p>
@@ -178,7 +176,7 @@
   <p class="mistake-rule"><span>The rule now</span>Before saving anything on GitHub, choose <strong>Create a new branch</strong>. Changes to permissions get the most review, not the least.</p>
 </aside>
 
-<p>One setting to check on day one: <strong>usage credits</strong> (once called extra usage), in Settings &gt; Usage. I keep them off. <a href="/journey/token-basics/">Chapter 2</a> explains why.</p>
+<p>One setting to check on day one: <strong>usage credits</strong> (once called extra usage), in Settings &gt; Usage. I keep them off, and <a href="/journey/token-basics/">chapter 2</a> explains why.</p>
 
 <p><strong>Skip it and:</strong> there’s no Code tab, and nothing below works.</p>
 
@@ -186,7 +184,7 @@
 
 <h2 id="step-2-make-a-free-github-account-and-lock-it">Step 2. Make a free GitHub account, and lock it</h2>
 
-<p>On 18 November, before I built anything, I couldn’t see why an AI app needed a second website. The answer is in two more words:</p>
+<p>Why an AI app needs a second website comes down to two more words:</p>
 
 <dl class="equals">
   <div><dt>Session</dt><dd><strong>= one conversation with Claude Code</strong><span>In the cloud it gets its own temporary computer. When the session goes quiet for a while, that computer is deleted.</span></dd></div>
@@ -198,21 +196,21 @@
   <figcaption class="figure-note">The session computer is a hotel room. GitHub is home.</figcaption>
 </figure>
 
-<p>Sign up at <a href="https://github.com">github.com</a> (free). That same day I locked the account in three ways, and I’d recommend all of them:</p>
+<p>Sign up at <a href="https://github.com">github.com</a> (free). On 18 November, before I built anything, I locked the account in three ways, and I’d recommend all of them:</p>
 
 <ul>
-  <li><strong>Two-factor authentication</strong> with an authenticator app, with the recovery codes saved somewhere safe. Your GitHub account is about to hold everything your AI builds, so a stolen password alone shouldn’t be enough to get in.</li>
+  <li><strong>Two-factor authentication</strong> with an authenticator app, with the recovery codes saved somewhere safe. The account is about to hold everything your AI builds, so a stolen password alone shouldn’t be enough to get in.</li>
   <li><strong>Keep my email addresses private</strong>, in GitHub’s email settings. Every saved change carries an author, and with this on, GitHub uses a private no-reply address instead of your real one.</li>
-  <li><strong>Block command line pushes that expose my email</strong>, just below it. If a tool ever tries to save a change under your real address, GitHub refuses it. Both settings matter the day you make anything public.</li>
+  <li><strong>Block command line pushes that expose my email</strong>, just below it. If a tool ever tries to save a change under your real address, GitHub refuses it. Both email settings matter the day you make anything public.</li>
 </ul>
 
-<p><strong>Skip it and:</strong> Claude’s work vanishes with each session’s computer. Cloud sessions need GitHub to copy your project in and to save it back.</p>
+<p><strong>Skip it and:</strong> Claude’s work vanishes with each session’s computer, because cloud sessions need GitHub to copy your project in and save it back.</p>
 
 <!-- SCREENSHOT TO ADD: GitHub's email settings in Safari on iPhone. Highlight the ticked boxes Keep my email addresses private and Block command line pushes that expose my email. -->
 
 <h2 id="step-3-create-one-private-repository">Step 3. Create one private repository</h2>
 
-<p>On 25 November my agent tried to create a repository for me through GitHub’s API, and my own safety guard blocked it as a write it wasn’t allowed to make. The guard was right, and I made the repository myself. It’s a step I now always do by hand.</p>
+<p>On 25 November my agent tried to create a repository for me through GitHub’s API, and my own safety guard blocked it as a write it wasn’t allowed to make. The guard was right, and creating repositories is now a step I always do by hand.</p>
 
 <dl class="equals">
   <div><dt>Repository</dt><dd><strong>= a project folder that remembers</strong><span>Also called a “repo”. It keeps every saved change, so you can see who changed what, and when, and go back (<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories">GitHub’s explanation</a>).</span></dd></div>
@@ -223,7 +221,7 @@
   <figcaption class="figure-note">The files are what you see. The history is what makes it a repository.</figcaption>
 </figure>
 
-<p>Open <a href="https://github.com/new">github.com/new</a>. Give it a short name, choose <strong>Private</strong>, and tick the option to add a <strong>README</strong> file. Claude Code’s docs say to start a new project this way, so the session has something to copy. Private first is my default: going public later is one switch, but once something is public, copies of it can exist outside your control.</p>
+<p>Open <a href="https://github.com/new">github.com/new</a>. Give it a short name, choose <strong>Private</strong>, and tick the option to add a <strong>README</strong> file, so the session has something to copy (Claude Code’s docs suggest this). Private first is my default: going public later is one switch, but once something is public, copies of it can exist outside your control.</p>
 
 <p><strong>Skip it and:</strong> Claude has nowhere to keep your work, and no place to read your rules from (step 8).</p>
 
@@ -233,7 +231,7 @@
 
 <p>On 18 November I gave Claude access to exactly one repository, my private <code class="language-plaintext highlighter-rouge">hq</code>, and added the website’s repository later that day, only once I needed it. If something goes wrong, it can only go wrong in the places you opened.</p>
 
-<p>Go to <a href="https://claude.ai/code">claude.ai/code</a> and follow the prompt to sign in with GitHub. That connection alone lets a session read public repositories. For a <strong>private</strong> one, you also install the <strong>Claude GitHub App</strong> on it. The onboarding offers this, or you can do it later from GitHub’s app page. When GitHub asks which repositories the app may use, choose <strong>Only select repositories</strong> and pick the one you just made.</p>
+<p>Go to <a href="https://claude.ai/code">claude.ai/code</a> and follow the prompt to sign in with GitHub. That connection alone lets a session read public repositories. For a <strong>private</strong> one, you also install the <strong>Claude GitHub App</strong> on it, either during onboarding or later from GitHub’s app page. When GitHub asks which repositories the app may use, choose <strong>Only select repositories</strong> and pick the one you just made.</p>
 
 <p><strong>Skip it and:</strong> your private repository doesn’t appear in the list when you start a session.</p>
 
@@ -241,11 +239,9 @@
 
 <h2 id="step-5-start-a-session-and-describe-a-task">Step 5. Start a session and describe a task</h2>
 
-<p>On 21 November a session working on the website couldn’t see my to-do list, because the list lived in <code class="language-plaintext highlighter-rouge">hq</code> and a session only knows the repositories you picked when it started. Since then, anything a future session needs goes into a file in the right repository, never only into the chat.</p>
+<p>In the Claude app’s Code tab (or at claude.ai/code), tap the repository selector below the message box and pick your repository. A session only knows the repositories you pick when it starts, so pick every one the task needs. Then choose a permission mode. <strong>Plan</strong> makes Claude propose an approach and wait for your OK before it edits anything, while <strong>Accept edits</strong> and <strong>Auto</strong> let it get on with it. I’d start with Plan, because reading a plan teaches you how the agent thinks.</p>
 
-<p>In the Claude app’s Code tab (or at claude.ai/code), tap the repository selector below the message box and pick your repository. Then choose a permission mode. <strong>Plan</strong> makes Claude propose an approach and wait for your OK before it edits anything, while <strong>Accept edits</strong> and <strong>Auto</strong> let it get on with it. I’d start with Plan, because reading a plan teaches you how the agent thinks.</p>
-
-<p>Then type what you want, in plain words, as you would to a colleague. Be specific: “add a page that lists my three favourite books” gets you further than “improve the site”, because Claude doesn’t have to guess what you meant.</p>
+<p>Then type what you want in plain words, as you would to a colleague. “Add a page that lists my three favourite books” gets you further than “improve the site”, because Claude doesn’t have to guess what you meant.</p>
 
 <p><strong>Skip it and:</strong> there’s nothing to build.</p>
 
@@ -258,7 +254,7 @@
   <div><dt>Pull request</dt><dd><strong>= “here are my changes, may they join main?”</strong><span>A page where you read every line, comment, ask for fixes, or close it without accepting anything (<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">about pull requests</a>).</span></dd></div>
 </dl>
 
-<p>By default, Claude works on a branch. Step 8 covers what actually stops it from touching main. When it reaches a stopping point, it pushes the branch to GitHub, and the session shows a <strong>Changes</strong> card with the lines added and removed, such as <code class="language-plaintext highlighter-rouge">+42 -18</code>. Tap the numbers to see what changed, then tap <strong>Create PR</strong>.</p>
+<p>By default, Claude works on a branch (step 8 covers what stops it from touching main). When it reaches a stopping point, it pushes the branch to GitHub, and the session shows a <strong>Changes</strong> card with the lines added and removed, such as <code class="language-plaintext highlighter-rouge">+42 -18</code>. Tap the numbers to see what changed, then tap <strong>Create PR</strong>.</p>
 
 <figure class="diagram">
   <img src="/assets/images/setup-branch-merge.svg" alt="Diagram: Claude works on a branch above the main line and saves three changes. It opens a pull request, where you read the changes. The branch joins main at a green merge point when you tap Merge pull request." width="400" height="418" />
@@ -277,9 +273,7 @@
 
 <p class="pullquote">On this website’s repository, nothing reaches main, and nothing goes public, until I tap that green button.</p>
 
-<p>Merging is the step where you approve the work, so I never let the AI do it. My guard hook blocks it, and the final say stays with a person.</p>
-
-<p>If you edit a file yourself on the GitHub website, check one thing before you save. The commit window picks <strong>main</strong> by default, so choose <strong>Create a new branch</strong> first. That default is how my permissions change skipped review (step 1).</p>
+<p>Merging is where you approve the work, so I never let the AI do it, and my guard blocks it. If you edit a file yourself on the GitHub website, the commit window picks <strong>main</strong> by default, so choose <strong>Create a new branch</strong> before you save (the mistake in step 1).</p>
 
 <p><strong>Skip it and:</strong> the work sits on a branch forever, finished but not part of anything.</p>
 
@@ -289,15 +283,13 @@
 
 <h2 id="step-8-give-it-rules-then-a-wall">Step 8. Give it rules, then a wall</h2>
 
-<p>The model forgets everything between sessions. A file called <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> at the top of your repository fixes that, because Claude Code reads it at the start of every session (<a href="https://code.claude.com/docs/en/memory">how Claude remembers your project</a>). Mine says things like “plan before building”, “work in small steps” and “never publish anything without asking”. If you don’t know where to begin, typing <code class="language-plaintext highlighter-rouge">/init</code> in a session drafts one for you. Keep it short, because every line is read in every session (<a href="/journey/token-basics/">chapter 2</a> has the numbers).</p>
+<p>Each session starts with no memory of the last one, so Claude Code reads a file called <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> at the top of your repository at the start of every session (<a href="https://code.claude.com/docs/en/memory">how Claude remembers your project</a>; more in <a href="/journey/memory/">chapter 4</a>). Mine says things like “plan before building”, “work in small steps” and “never publish anything without asking”. Typing <code class="language-plaintext highlighter-rouge">/init</code> in a session drafts one for you. Keep it short, because every line is read in every session (<a href="/journey/token-basics/">chapter 2</a> has my numbers).</p>
 
-<p>A written rule is still a request, and it depends on the model choosing to follow it. Claude Code can also run <strong>hooks</strong>, small scripts that check an action before it happens (<a href="https://code.claude.com/docs/en/hooks">hooks</a>). Mine blocks pushes to main, force pushes and merges.</p>
-
-<p>The last layer sits on GitHub itself. A <strong>ruleset</strong> refuses any change to main that doesn’t come through a pull request, whoever sends it, and on this website’s repository the list of people allowed to bypass it is empty, me included. GitHub’s free plan enforces rulesets only on public repositories. <a href="/journey/ai-hq/">Chapter 3</a> covers how my hook and ruleset work together, and what I do for the private repositories that have no ruleset.</p>
+<p>A written rule is still a request, so two walls stand behind mine. A <strong>hook</strong> is a small script Claude Code runs to check each command before it happens (<a href="https://code.claude.com/docs/en/hooks">hooks</a>). A <strong>ruleset</strong>, on this website’s repository, makes GitHub itself refuse any change to main without a pull request. GitHub’s free plan enforces rulesets only on public repositories. <a href="/journey/ai-hq/">Chapter 3</a> shows how the two work together, and how I attacked my own hook.</p>
 
 <p><strong>Skip it and:</strong> every session starts from zero, and “please don’t touch main” is only ever a polite request.</p>
 
-<h2 id="try-it-your-first-task">Try it: your first task</h2>
+<h2 id="try-it-yourself">Try it yourself</h2>
 
 <p>In a new session on your new repository, with the permission mode on <strong>Plan</strong>, paste this:</p>
 
@@ -309,9 +301,7 @@
 3. Never change main directly. Always use a branch and a pull request.</code></pre>
 </div>
 
-<p>Approve the plan, tap <strong>Create PR</strong>, read the one file it added, and press <strong>Merge pull request</strong>. Then start a brand-new session and ask it what its rules are. It has never seen you before, and it will still answer with your three rules, because they now live in the repository instead of in a chat.</p>
-
-<p>These rules are context, not a lock. The docs say there’s no guarantee of strict compliance, which is why step 8 adds a hook and a ruleset.</p>
+<p>Approve the plan, tap <strong>Create PR</strong>, read the one file it added, and press <strong>Merge pull request</strong>. Then start a brand-new session and ask it what its rules are. It has never seen you before, and it will still answer with your three rules, because they now live in the repository instead of in a chat. The docs say there’s no guarantee it will always follow them, which is why step 8 adds the walls.</p>
 
 <h2 id="check-yourself">Check yourself</h2>
 
